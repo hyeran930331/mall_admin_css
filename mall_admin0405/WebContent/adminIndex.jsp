@@ -137,14 +137,14 @@
 	      	<div class="row">
 		      <%
 		      //public static ArrayList<Manager> selectManagerListByZero()
-		     ArrayList<Manager> list = ManagerDao.selectManagerListByZero();
+		     //ArrayList<Manager> list = ManagerDao.selectManagerListByZero();
               %>
 				
 			  <%
 			  //이미지가 3,4만 쓰고싶어서
 			  	int c = 0;
 			 	int i = 0;
-				for(Manager mm0: list){
+				//for(Manager mm0: list){
 				c += 1;
 				i = (c%2)+3;
 			  %>
@@ -156,14 +156,14 @@
 		        	  <img src="images/person_<%=i%>.jpg" alt="Image" class="img-fluid ounded-circle">
 		            </figure>
 		          <div class="vcard-text">
-		            <span class="d-block"><%=mm0.getManagerId()%></span>
-		            <span class="position"><%=mm0.getManagerDate()%></span>
+		            <span class="d-block">mm0.getManagerId()%></span>
+		            <span class="position">mm0.getManagerDate()%></span>
 		          </div>
 		         </div>
 		        </div>
 		       </div>
 		       <%
-				}
+				//}
 			   %>
 		       
 		        </div> <!-- row -->
