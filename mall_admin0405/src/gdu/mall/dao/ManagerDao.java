@@ -236,7 +236,7 @@ public class ManagerDao {
 		Connection conn = DButil.getConnection(); //커넥션 메서드
 		
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, managerId+"2");
+		stmt.setString(1, managerId);
 		stmt.setString(2, managerPw);
 		stmt.setString(3, managerName);
 		rowCnt = stmt.executeUpdate();

@@ -35,7 +35,6 @@
 	}
 	%>
 	<!-- 3. 출력 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "gdu.mall.vo.*" %>
 <%@ page import = "gdu.mall.dao.*" %>
 <%@ page import="java.util.*" %>
@@ -105,11 +104,7 @@
 	           <div class="intro">
 	            <div class="text">
 	              	
-	              	<h1>매니저 등록 성공, 승인 후 사용 가능합니다.</h1>
-	                <br>
-	                <div>
-						<button class="btn btn-danger" type="submit"><a href="<%=request.getContextPath()%>/adminIndex.jsp">운영자 홈</a></button>
-					</div>
+	              	<h1>매니저 등록 <span class="text-primary">성공, 승인 후</span> 사용 가능합니다. <a class="btn btn-primary" href="<%=request.getContextPath()%>/adminIndex.jsp"> 홈으로 </a></h1>
 					
 			    </div>
 			   </div>

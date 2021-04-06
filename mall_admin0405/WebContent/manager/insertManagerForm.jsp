@@ -102,7 +102,7 @@
 		</table>
 		<div class="TR">
 			<h3 class="IN">아이디, 이름 변경은 어렵습니다.</h3>
-			<button class="btn btn-primary" type="submit" onClick="location.href='<%=request.getContextPath()%>+/managerIndex.jsp'">신청</button>
+			<button class="btn btn-primary" type="submit">신청</button>
 		</div>
 	</form>
 	
