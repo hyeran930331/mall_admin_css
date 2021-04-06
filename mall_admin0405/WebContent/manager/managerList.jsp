@@ -134,7 +134,7 @@
 								<th><span class="text-primary">managerName</span></th>
 								<th>managerDate</th>
 								<th>managerLevel</th>
-								<th>수정</th>
+								<th>레벨</th>
 								<th>삭제 </th>
 							</tr>
 							</thead>
@@ -154,7 +154,7 @@
 										<form action="<%=request.getContextPath()%>/manager/updateManagerLevelAction.jsp" method="post">
 											<input type="hidden" name="managerNo" value="<%=m.getManagerNo()%>">
 											<div class="input-group input-group-sm mb-3 input-group-prepend">
- 											 <select class="custom-select" name="managerLevel" id="inputGroup-sizing-sm">
+ 											  <select name="managerLevel"  class="custom-select"  id="inputGroup-sizing-sm">
 												<%
 													for (int i=0; i<3; i++){//두번째 셀렉트반복 for
 														if (m.getManagerLevel() == i) {
@@ -163,16 +163,16 @@
 												<%		
 														} else {
 												%>
-														<option value="<%=i%>"> <%=i%></option>
+															<option value="<%=i%>"> <%=i%></option>
 												<%
 														}//if
 													}//두번째 포for
 												%>
-											</select>
-											<div class="input-group-append">
-   											 <button class="btn btn-white" type="submit">수정</button>
+											 </select>
+												 <div class="input-group-append">
+	   											 <button class="btn btn-white" type="submit">승인</button>
+												 </div>
 											</div>
-										</div>
 										</form>
 									</td>
 									<td class="input-group input-group-sm mb-3">
