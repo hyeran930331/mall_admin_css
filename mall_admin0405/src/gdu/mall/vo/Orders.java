@@ -26,10 +26,10 @@ public class Orders {
 		this.clientNo = clientNo;
 	}
 	public String getOrdersDate() {
-		return ordersDate.substring(0,10);
+		return ordersDate;
 	}
 	public void setOrdersDate(String ordersDate) {
-		this.ordersDate = ordersDate;
+		this.ordersDate = ordersDate.substring(0,10);
 	}
 	public String getOrdersState() {
 		return ordersState;
