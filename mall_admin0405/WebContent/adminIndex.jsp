@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Mail.Book &mdash; Website Template by Colorlib</title>
+    <title>Grunt &mdash; Website Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -29,8 +29,9 @@
     
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
 
-  <!-- 전체를 감싸는 div -->
+
   <div class="site-wrap">
 
  	<%
@@ -42,8 +43,6 @@
 	
 	<!-- if null 절을 감싸는  -->
    <div>
-   	<!-- 0메뉴바 div -->
-	<!-- 모바일버전. 안채워둠 -->
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -53,17 +52,18 @@
       <div class="site-mobile-menu-body"></div>
     </div> <!-- .site-mobile-menu -->
     
-    <!-- 데스크탑버전. -->
+    
     <div class="site-navbar-wrap">
+      
       <div class="site-navbar site-navbar-target js-sticky-header">
         <div class="container">
           <div class="row align-items-center">
-          	<!-- 메뉴바 2개 div -->
-           	<!-- 왼쪽 로고 div -->
-            <div class="col-6 col-md-4 half">
+            <div class="col-6 col-md-4">
               <h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
-            <!-- 관리자화면 메뉴(네비게이션) include -->
-		       
+            </div>
+		       <!-- include -->
+		        <div class="col-8 col-md-8 mb-5 t-14">
+				</div>
           </div>
         </div>
       </div>
