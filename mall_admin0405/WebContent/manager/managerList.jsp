@@ -44,10 +44,7 @@
 	}
 	%>
   <!-- 전체를 감싸는-->
-  <div class="site-wrap">
-  
-   	<!-- 0메뉴바 div -->
-	<!-- 모바일버전. 안채워둠 -->
+   <div class="site-wrap">
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -57,23 +54,21 @@
       <div class="site-mobile-menu-body"></div>
     </div> <!-- .site-mobile-menu -->
     
-    <!-- 데스크탑버전. -->
+    
     <div class="site-navbar-wrap">
+      
       <div class="site-navbar site-navbar-target js-sticky-header">
         <div class="container">
           <div class="row align-items-center">
-          	<!-- 메뉴바 2개 div -->
-           	<!-- 왼쪽 로고 div -->
-            <div class="col-6 col-md-4 half">
+            <div class="col-6 col-md-4">
               <h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
             </div>
-         	<!-- 오른쪽 버튼 div -->
-            <!-- 관리자화면 메뉴(네비게이션) include -->
-	   			<jsp:include page="/inc/adminMenu.jsp"></jsp:include>
+		       <!-- include -->
+		        <jsp:include page="/inc/adminMenu.jsp"></jsp:include>
           </div>
         </div>
       </div>
-    </div> <!-- END .site-navbar-wrap --> 
+    </div> <!-- END .site-navbar-wrap -->  
 	
 	<!-- 페이지 -->
 	<%
