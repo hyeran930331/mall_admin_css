@@ -41,33 +41,37 @@
 	%>
 	
 	<!-- if null 절을 감싸는  -->
-	<div>
-	 <!-- 0메뉴바 div -->
-	 <!-- 모바일버전. 안채워둠 -->
-	 <div class="site-mobile-menu site-navbar-target">
-	  <div class="site-mobile-menu-header">
-	   <div class="site-mobile-menu-close mt-3">
-	    <span class="icon-close2 js-menu-toggle"></span>
-	   </div>
-	  </div>
-	  <div class="site-mobile-menu-body"></div>
-	 </div> <!-- .site-mobile-menu -->
-	 
-	 <!-- 데스크탑버전. -->
-	 <div class="site-navbar-wrap">
-	      <div class="site-navbar site-navbar-target js-sticky-header">
-	        <div class="container">
-	          <div class="row align-items-center">
-	          	<!-- 메뉴바 2개 div -->
-	           	<!-- 왼쪽 로고 div -->
-	           	<div class="col-6 col-md-4">
-              	<h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
-            	</div>
-            	<!-- 오른쪽 메뉴 -->
-	          </div>
-	        </div>
-	      </div>
-	 </div> <!-- END .site-navbar-wrap --> 
+   <div>
+   	<!-- 0메뉴바 div -->
+	<!-- 모바일버전. 안채워둠 -->
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    <!-- 데스크탑버전. -->
+    <div class="site-navbar-wrap">
+      <div class="site-navbar site-navbar-target js-sticky-header">
+        <div class="container">
+          <div class="row align-items-center">
+          	<!-- 메뉴바 2개 div -->
+           	<!-- 왼쪽 로고 div -->
+            <div class="col-6 col-md-4 half">
+              <h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
+            </div>
+         	<!-- 오른쪽 버튼 div -->
+            <!-- 관리자화면 메뉴(네비게이션) include -->
+		        <div class="col-8 col-md-8 mb-5 t-14">
+				</div>
+		
+          </div>
+        </div>
+      </div>
+    </div> <!-- END .site-navbar-wrap --> 
 				
 	  <!-- 1로그인 + 2manager level=0 -->
 	  <!-- 1로그인 -->
@@ -211,19 +215,21 @@
    <!-- 1로그인성공안내 + 2최근이슈5개씩 -->
    <!-- 1로그인성공안내 -->
 	<div class="site-blocks-cover" id="home-section">
+	  
 	  <div class="img-wrap">
 		<div class="owl-carousel slide-one-item hero-slider">
 	 	  <div class="slide">
-			 <img src="images/glint_hero_1.jpg" alt="Image">  
+			 <img src="<%=request.getContextPath()%>/images/glint_hero_1.jpg" alt="Image">  
 		  </div>
 	  	  <div class="slide">
-		 	<img src="images/glint_hero_2.jpg" alt="Image">  
+		 	<img src="<%=request.getContextPath()%>/images/glint_hero_2.jpg" alt="Image">  
 	  	  </div>
 	    <div class="slide">
-	<img src="images/glint_hero_3.jpg" alt="Image">  
+			<img src="<%=request.getContextPath()%>/images/glint_hero_3.jpg" alt="Image">  
+	    </div>
+		</div>
 	  </div>
-	</div>
-	  </div>
+	  
 	  <div class="container">
 		<div class="row">
 		  <div class="col-md-6 ml-auto align-self-center">
@@ -246,6 +252,7 @@
 				LEVEL : <%=manager.getManagerLevel() %>	
 			 </h2>
 		   </div>
+		   <a href="<%=request.getContextPath()%>/manager/logoutManagerAction.jsp" class="btn btn-primary px-5">로그아웃</a>
 		  </div>
 		</div>
 	  </div>
@@ -277,7 +284,7 @@
             <!-- 매니저 목록 -->
               <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                 <div class="service h-100 bg-op">
-                  <h3>managerList &ensp;&ensp;<a class="readmore" href="<%=request.getContextPath()%>/manager/managerList.jsp">more</a> </h3>
+                  <h3>managerList <a class="readmore" href="<%=request.getContextPath()%>/manager/managerList.jsp">more</a></h3>
                   <table class="table table-hover bl">
 						<tr class="thead-light">
 							<th><h3>Id</h3></th>
@@ -359,7 +366,7 @@
 						<tr scope="row">
 							<td><h3><%=oec.getOrders().getOrdersNo()%></h3></td>
 							<td><h3><%=oec.getEbook().getEbookTitle()%></h3></td>
-							<td><h3 class="text-responsive"><%=oec.getOrders().getOrdersDate()%></h3></td>
+							<td><h3><%=oec.getOrders().getOrdersDate()%></h3></td>
 						</tr>
 						<%
 						}
@@ -406,7 +413,7 @@
    <%
    }
    %>
-   
+</div>   
 <div>
 	<footer>
         <div class="row pt-5 mt-5 text-center">

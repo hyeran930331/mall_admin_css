@@ -281,12 +281,12 @@ public class EbookDao {
 			String sql = null;
 			//sql - categoryName에 따른 동적쿼리?
 			if(categoryName.equals("")) {//categoryName 없으면
-				sql = "SELECT category_name categoryName, ebook_isbn ebookISBN, ebook_title ebookTitle, ebook_author ebookAuthor, ebook_date ebookDate, ebook_price ebookPrice FROM ebook ORDER BY ebook_date DESC LIMIT ?,?";
+				sql = "SELECT ebook_no ebookNo, category_name categoryName, ebook_isbn ebookISBN, ebook_title ebookTitle, ebook_author ebookAuthor, ebook_date ebookDate, ebook_price ebookPrice FROM ebook ORDER BY ebook_date DESC LIMIT ?,?";
 				stmt = conn.prepareStatement(sql);
 				stmt.setInt(1, beginRow);
 				stmt.setInt(2, rowPerPage);
 			} else {//categoryName 있으면
-				sql = "SELECT category_name categoryName, ebook_isbn ebookISBN, ebook_title ebookTitle, ebook_author ebookAuthor, ebook_date ebookDate, ebook_price ebookPrice FROM ebook WHERE category_name = ? ORDER BY ebook_date DESC LIMIT ?,?";
+				sql = "SELECT ebook_no ebookNo, category_name categoryName, ebook_isbn ebookISBN, ebook_title ebookTitle, ebook_author ebookAuthor, ebook_date ebookDate, ebook_price ebookPrice FROM ebook WHERE category_name = ? ORDER BY ebook_date DESC LIMIT ?,?";
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, categoryName);
 				stmt.setInt(2, beginRow);
@@ -305,7 +305,7 @@ public class EbookDao {
 				e.setEbookAuthor(rs.getString("ebookAuthor"));
 				e.setEbookDate(rs.getString("ebookDate"));
 				e.setEbookPrice(rs.getInt("ebookPrice"));
-				
+				e.setEbookNo(rs.getInt("ebookNo"));
 				list.add(e);
 			}
 		
