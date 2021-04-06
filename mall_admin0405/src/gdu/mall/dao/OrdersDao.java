@@ -80,7 +80,7 @@ public class OrdersDao {
 		 * 
 		 * limit ?,?";
 		 */
-		String sql = "SELECT o.orders_no ordersNo, o.ebook_no ebookNo, e.ebook_title ebookTitle, o.client_no clientNo, c.client_mail clientMail, o.orders_state ordersState FROM orders o INNER JOIN ebook e INNER JOIN client c ON o.ebook_no = e.ebook_no AND o.client_no = c.client_no ORDER BY o.orders_date DESC limit ?,?";
+		String sql = "SELECT o.orders_date ordersDate, o.orders_no ordersNo, o.ebook_no ebookNo, e.ebook_title ebookTitle, o.client_no clientNo, c.client_mail clientMail, o.orders_state ordersState FROM orders o INNER JOIN ebook e INNER JOIN client c ON o.ebook_no = e.ebook_no AND o.client_no = c.client_no ORDER BY o.orders_date DESC limit ?,?";
 		Connection conn = DButil.getConnection();
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, beginRow);
@@ -97,6 +97,7 @@ public class OrdersDao {
 			o.setEbookNo(rs.getInt("ebookNo"));
 			o.setClientNo(rs.getInt("clientNo"));
 			o.setOrdersState(rs.getString("ordersState"));
+			o.setOrdersDate(rs.getString("ordersDate"));
 			//채운 다음 oec에 넣어줌
 			oec.setOrders(o);
 				

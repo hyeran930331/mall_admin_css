@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Mail.Book &mdash; Website Template by Colorlib</title>
+    <title>Grunt &mdash; Website Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-    </div> <!-- END .site-navbar-wrap -->
+    </div> <!-- END .site-navbar-wrap --> 
 				
 	  <!-- 1로그인 + 2manager level=0 -->
 	  <!-- 1로그인 -->
@@ -106,7 +106,7 @@
 				                 name="managerId" placeholder="ManagerID" aria-describedby="button-addon2">
 				                </div>
 				                <div class="form-group mb-3">
-				                  <input type="text" class="form-control border-white text-white bg-transparent" 
+				                  <input type="password" class="form-control border-white text-white bg-transparent" 
 				                  name="managerPw" placeholder="Enter Password" aria-describedby="button-addon2">
 				                </div>
 				                <div class="form-group">
@@ -125,7 +125,7 @@
 	    </div> <!-- END .site-blocks-cover -->
 	    
 	    <!-- 2manager level=0 -->
-	    <div class="site-section bg-light">
+	    <div class="site-section bg-light" id="manager_level=0">
 	      <div class="container">
 	         <div class="row mb-5 ">
 	          <div class="col-md-7 section-title text-center mx-auto">
@@ -137,10 +137,11 @@
 	      	<div class="row">
 		      <%
 		      //public static ArrayList<Manager> selectManagerListByZero()
-		     // ArrayList<Manager> list = ManagerDao.selectManagerListByZero();
+		     //ArrayList<Manager> list = ManagerDao.selectManagerListByZero();
               %>
 				
 			  <%
+			  //이미지가 3,4만 쓰고싶어서
 			  	int c = 0;
 			 	int i = 0;
 				//for(Manager mm0: list){
@@ -177,7 +178,7 @@
    %>
    
    <!-- else 절을 감싸는 -->
-  <div>
+   <div>
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -206,26 +207,28 @@
    <!-- 1로그인성공안내 + 2최근이슈5개씩 -->
    <!-- 1로그인성공안내 -->
 	<div class="site-blocks-cover" id="home-section">
+	  
 	  <div class="img-wrap">
 		<div class="owl-carousel slide-one-item hero-slider">
 	 	  <div class="slide">
-			 <img src="images/glint_hero_1.jpg" alt="Image">  
+			 <img src="<%=request.getContextPath()%>/images/glint_hero_1.jpg" alt="Image">  
 		  </div>
 	  	  <div class="slide">
-		 	<img src="images/glint_hero_2.jpg" alt="Image">  
+		 	<img src="<%=request.getContextPath()%>/images/glint_hero_2.jpg" alt="Image">  
 	  	  </div>
 	    <div class="slide">
-	<img src="images/glint_hero_3.jpg" alt="Image">  
+			<img src="<%=request.getContextPath()%>/images/glint_hero_3.jpg" alt="Image">  
+	    </div>
+		</div>
 	  </div>
-	</div>
-	  </div>
+	  
 	  <div class="container">
 		<div class="row">
 		  <div class="col-md-6 ml-auto align-self-center">
 		   <div class="intro">
 		
 		    <div class="heading">
-				<h1>매일<span class="text-primary">.</span>북<h1>
+				<h1>매일<span class="text-primary">.</span>북</h1>
 		    </div>
 		  	<div class="text">
 		     <h3>Mail을 이용해 책을 <br>어디서든 매일 book</h3>
@@ -241,6 +244,7 @@
 				LEVEL : <%=manager.getManagerLevel() %>	
 			 </h2>
 		   </div>
+		   <a href="<%=request.getContextPath()%>/manager/logoutManagerAction.jsp" class="btn btn-primary px-5">로그아웃</a>
 		  </div>
 		</div>
 	  </div>
@@ -262,7 +266,7 @@
         <div class="row mb-5">
           <div class="col-lg-6 section-title">
             <span class="sub-title mb-2 d-block">최근 이슈</span>
-            <h2 class="title text-primary">최근 5개의 중요이슈</h2>
+            <h2 class="title text-primary">최근 5개 중요이슈</h2>
           </div>
         </div>
         
@@ -272,7 +276,7 @@
             <!-- 매니저 목록 -->
               <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                 <div class="service h-100 bg-op">
-                  <h3>managerList &ensp;&ensp;<a class="readmore" href="<%=request.getContextPath()%>/manager/managerList.jsp">more</a> </h3>
+                  <h3>managerList <a class="readmore" href="<%=request.getContextPath()%>/manager/managerList.jsp">more</a></h3>
                   <table class="table table-hover bl">
 						<tr class="thead-light">
 							<th><h3>Id</h3></th>
@@ -354,7 +358,7 @@
 						<tr scope="row">
 							<td><h3><%=oec.getOrders().getOrdersNo()%></h3></td>
 							<td><h3><%=oec.getEbook().getEbookTitle()%></h3></td>
-							<td><h3 class="text-responsive"><%=oec.getOrders().getOrdersDate()%></h3></td>
+							<td><h3><%=oec.getOrders().getOrdersDate()%></h3></td>
 						</tr>
 						<%
 						}
@@ -401,7 +405,7 @@
    <%
    }
    %>
-   
+</div>   
 <div>
 	<footer>
         <div class="row pt-5 mt-5 text-center">
