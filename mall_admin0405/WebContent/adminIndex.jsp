@@ -197,12 +197,12 @@
             <div class="col-6 col-md-4">
               <h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
             </div>
-            <!-- 관리자화면 메뉴(네비게이션) include -->
-	   			<jsp:include page="/inc/adminMenu.jsp"></jsp:include>
+		       <!-- include -->
+		        <jsp:include page="/inc/adminMenu.jsp"></jsp:include>
           </div>
         </div>
       </div>
-    </div> <!-- END .site-navbar-wrap -->
+    </div> <!-- END .site-navbar-wrap --> 
     
    <!-- 1로그인성공안내 + 2최근이슈5개씩 -->
    <!-- 1로그인성공안내 -->
