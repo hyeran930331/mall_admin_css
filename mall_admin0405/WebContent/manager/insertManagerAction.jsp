@@ -104,7 +104,7 @@
 	           <div class="intro">
 	            <div class="text">
 	              	
-	              	<h1>매니저 등록 <span class="text-primary">성공, 승인 후</span> 사용 가능합니다. <a class="btn btn-primary" href="<%=request.getContextPath()%>/adminIndex.jsp"> 홈으로 </a></h1>
+	              	<h1>매니저 등록 <span class="text-primary">성공, 승인 후</span> 사용 가능합니다. <a class="btn btn-primary" href="<%=request.getContextPath()%>/adminIndex.jsp#manager_level=0"> 확인하러 </a></h1>
 					
 			    </div>
 			   </div>

@@ -11,21 +11,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/icomoon/style.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/animate.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     
     
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/aos.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     
 
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -62,12 +62,8 @@
            	<!-- 왼쪽 로고 div -->
             <div class="col-6 col-md-4 half">
               <h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
-            </div>
-         	<!-- 오른쪽 버튼 div -->
             <!-- 관리자화면 메뉴(네비게이션) include -->
-		        <div class="col-8 col-md-8 mb-5 t-14">
-				</div>
-		
+		       
           </div>
         </div>
       </div>
@@ -129,7 +125,7 @@
 	    </div> <!-- END .site-blocks-cover -->
 	    
 	    <!-- 2manager level=0 -->
-	    <div class="site-section bg-light">
+	    <div class="site-section bg-light" id="manager_level=0">
 	      <div class="container">
 	         <div class="row mb-5 ">
 	          <div class="col-md-7 section-title text-center mx-auto">
@@ -183,8 +179,6 @@
    
    <!-- else 절을 감싸는 -->
    <div>
-   	<!-- 0메뉴바 div -->
-	<!-- 모바일버전. 안채워둠 -->
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -194,23 +188,21 @@
       <div class="site-mobile-menu-body"></div>
     </div> <!-- .site-mobile-menu -->
     
-    <!-- 데스크탑버전. -->
+    
     <div class="site-navbar-wrap">
+      
       <div class="site-navbar site-navbar-target js-sticky-header">
         <div class="container">
           <div class="row align-items-center">
-          	<!-- 메뉴바 2개 div -->
-           	<!-- 왼쪽 로고 div -->
-            <div class="col-6 col-md-4 half">
+            <div class="col-6 col-md-4">
               <h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
             </div>
-         	<!-- 오른쪽 버튼 div -->
             <!-- 관리자화면 메뉴(네비게이션) include -->
 	   			<jsp:include page="/inc/adminMenu.jsp"></jsp:include>
           </div>
         </div>
       </div>
-    </div> <!-- END .site-navbar-wrap --> 
+    </div> <!-- END .site-navbar-wrap -->
     
    <!-- 1로그인성공안내 + 2최근이슈5개씩 -->
    <!-- 1로그인성공안내 -->
