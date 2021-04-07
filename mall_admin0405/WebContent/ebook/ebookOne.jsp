@@ -106,7 +106,7 @@
 				<!-- 글 전체 -->		       
 				<div class="d-flex">   
 				<!-- 1 테이블 -->  
-	<table border="1">
+	<table class="table table-second table-hover TC">
 		<tr>
 			<th>ebookNO</th>
 			<td><%=e.getEbookNo()%></td>
@@ -204,5 +204,10 @@
 		삭제
 	</a>
 	</button>
+		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
+	   </div> <!-- <div class="container">-->
+	  </div> <!-- <div class="row">-->
+	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	</div>
 </body>
 </html>

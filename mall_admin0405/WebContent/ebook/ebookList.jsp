@@ -159,7 +159,7 @@
 	</form>
 	
 	<!--  table -->
-	<table border="1">
+	<table class="table table-second table-hover TC">
 			<th>categoryName</th>
 			<th>ebookISBN</th>
 			<th>ebookTitle</th>
@@ -229,5 +229,10 @@
 			검색
 			</button>
 		</form>
+				</div> <!-- <div class="site-blocks-cover" id="home-section">-->
+	   </div> <!-- <div class="container">-->
+	  </div> <!-- <div class="row">-->
+	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	</div>
 </body>
 </html>

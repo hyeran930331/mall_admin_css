@@ -104,7 +104,7 @@
 				<!-- 글 전체 -->		       
 				<div class="d-flex">   
 				<!-- 1 테이블 -->  
-	<table border="1">
+	<table class="table table-second table-hover TC">
 		<tr>
 			<th>noticeTitle</th>
 			<td><%=n.getNoticeTitle()%></td>
@@ -172,5 +172,10 @@
 		<textarea rows="2" cols="30" name="commentContent"></textarea>
 		<button type="submit">댓글입력 </button>
  	</form>
+		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
+	   </div> <!-- <div class="container">-->
+	  </div> <!-- <div class="row">-->
+	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	</div>
 </body>
 </html>

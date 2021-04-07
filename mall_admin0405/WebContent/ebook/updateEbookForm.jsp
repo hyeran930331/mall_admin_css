@@ -114,7 +114,7 @@
 				<div class="d-flex">   
 				<!-- 1 테이블 -->  
 	<form action="<%=request.getContextPath()%>/ebook/updateEbookAction.jsp?ebookISBN=<%=ebookISBN%>">
-	<table border="1">
+	<table class="table table-second table-hover TC">
 		<tr>
 			<th>ebookNO</th>
 			<td>수정 불가 : <%=e.getEbookNo()%>
@@ -202,5 +202,10 @@
 	
 	<button type="submit">수정</button>
 	</form>
+		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
+	   </div> <!-- <div class="container">-->
+	  </div> <!-- <div class="row">-->
+	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	</div>
 </body>
 </html>

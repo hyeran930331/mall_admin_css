@@ -96,7 +96,7 @@
 	<form action="<%=request.getContextPath()%>/notice/insertNoticeAction.jsp" method="post">
 		<input type="hidden" name="managerId" value="<%=m.getManagerId()%>">
 		
-		<table border="1">	
+		<table class="table table-second table-hover TC">	
 			<tr>
 				<th>noticeTitle</th>
 				<td><input type="text" name= "noticeTitle"></td>
@@ -109,5 +109,10 @@
 		
 		<button type="submit">공지 생성</button>
 	</form>
+		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
+	   </div> <!-- <div class="container">-->
+	  </div> <!-- <div class="row">-->
+	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	</div>
 </body>
 </html>

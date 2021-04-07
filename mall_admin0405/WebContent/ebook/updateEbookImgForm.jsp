@@ -97,5 +97,9 @@
 		<input type="file" name="ebookImg">
 		<button type="submit">이미지 수정</button>
 	</form>
+		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
+	   </div> <!-- <div class="container">-->
+	  </div> <!-- <div class="row">-->
+	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
 </body>
 </html>

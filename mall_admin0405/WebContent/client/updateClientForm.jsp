@@ -95,7 +95,7 @@
 				<div class="d-flex">   
 				<!-- 1 테이블 -->  
 	<form action ="<%=request.getContextPath()%>/client/updateClientAction.jsp" method="post">
-		<table>
+		<table class="table table-second table-hover TC">
 		<tr>
 			<td>Email</td>
 			<td><%=c.getClientMail()%></td>
@@ -116,5 +116,10 @@
 		</tr>
 		</table>
 	</form>
+		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
+	   </div> <!-- <div class="container">-->
+	  </div> <!-- <div class="row">-->
+	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	</div>
 </body>
 </html>
