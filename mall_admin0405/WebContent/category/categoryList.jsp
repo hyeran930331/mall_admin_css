@@ -78,8 +78,6 @@
     </div> <!-- END .site-navbar-wrap --> 
 	
 	<!-- 페이지 -->
-		
-	<!-- 1 매니저-->
 	  <div class="site-blocks-cover" id="home-section">
 	      <div class="container">
 	        <div class="row">
@@ -97,7 +95,7 @@
 	              </div> 
 	             </div>
 	             
-				<!-- 매니저 글 전체 -->		       
+				<!-- 글 전체 -->		       
 				<div class="d-flex">   
 				<!-- 1 테이블 -->         			              
 				<table class="table table-second table-hover TC">

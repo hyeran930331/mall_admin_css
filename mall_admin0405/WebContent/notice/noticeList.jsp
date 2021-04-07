@@ -38,17 +38,6 @@
 		return;
 	}
 	%>
-
-	<!-- 게시판모양 (넘버 타이틀 게시자 날짜), 페이징 넣기, noticeOne, 공지추가 기능, 페이지당 행의 수 바꾸기 -->
-	<!-- 관리자화면 메뉴(네비게이션) include -->
-	<div>
-		<jsp:include page="/inc/adminMenu.jsp"></jsp:include>
-	</div>
-	
-	<h1>noticeList</h1>
-	
-	<a href ="<%=request.getContextPath()%>/notice/insertNoticeForm.jsp"><button>공지추가</button></a>
-	
 	<%
 	//페이징
 	int currentPage = 1;
@@ -70,6 +59,62 @@
 	//Dao에서 게시글 호출 , noticeList
 	ArrayList<Notice> list = NoticeDao.selectNoticeList(beginRow, rowPerPage);
 	%>
+  <!-- 전체를 감싸는-->
+  <div class="site-wrap">
+  
+   	<!-- 0메뉴바 div -->
+	<!-- 모바일버전. 안채워둠 -->
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    <!-- 데스크탑버전. -->
+    <div class="site-navbar-wrap">
+      <div class="site-navbar site-navbar-target js-sticky-header">
+        <div class="container">
+          <div class="row align-items-center">
+          	<!-- 메뉴바 2개 div -->
+           	<!-- 왼쪽 로고 div -->
+            <div class="col-6 col-md-4 half">
+              <h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
+            </div>
+         	<!-- 오른쪽 버튼 div -->
+            <!-- 관리자화면 메뉴(네비게이션) include -->
+	   			<jsp:include page="<%=request.getContextPath()%>/inc/adminMenu.jsp"></jsp:include>
+          </div>
+        </div>
+      </div>
+    </div> <!-- END .site-navbar-wrap --> 
+	
+	<!-- 페이지 -->
+	  <div class="site-blocks-cover" id="home-section">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-md-12 ml-auto align-self-center">
+	            
+	            <div class="intro">
+	              <div class="text">
+	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+	                <br>
+	                <div class="TR">
+	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
+	          
+	                </div>
+	                <br>
+	              </div> 
+	             </div>
+	             
+				<!-- 글 전체 -->		       
+				<div class="d-flex">   
+				<!-- 1 테이블 -->  
+	<a href ="<%=request.getContextPath()%>/notice/insertNoticeForm.jsp"><button>공지추가</button></a>
+	
+
 	
 	<!-- rowPerPage 변경기능 -->
 	<form action ="<%=request.getContextPath()%>/notice/noticeList.jsp" method="post">

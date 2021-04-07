@@ -64,21 +64,60 @@
 	ArrayList<Ebook> list = EbookDao.selectEbookListByPage(beginRow,rowPerPage,searchWord);
 	%>
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>이북리스트</title>
-</head>
-<body>
+
 	<!-- 3. 출력 -->
-	<h1>ebook List</h1>
-	<!-- 상단바 -->
-	<div>
-		<jsp:include page="/inc/adminMenu.jsp"></jsp:include>
-	</div>
-	<br>
+  <!-- 전체를 감싸는-->
+  <div class="site-wrap">
+  
+   	<!-- 0메뉴바 div -->
+	<!-- 모바일버전. 안채워둠 -->
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    <!-- 데스크탑버전. -->
+    <div class="site-navbar-wrap">
+      <div class="site-navbar site-navbar-target js-sticky-header">
+        <div class="container">
+          <div class="row align-items-center">
+          	<!-- 메뉴바 2개 div -->
+           	<!-- 왼쪽 로고 div -->
+            <div class="col-6 col-md-4 half">
+              <h1 class="my-0 site-logo"><a href="<%=request.getContextPath()%>/adminIndex.jsp">Mail<span class="text-primary">.</span>book</a></h1>
+            </div>
+         	<!-- 오른쪽 버튼 div -->
+            <!-- 관리자화면 메뉴(네비게이션) include -->
+	   			<jsp:include page="<%=request.getContextPath()%>/inc/adminMenu.jsp"></jsp:include>
+          </div>
+        </div>
+      </div>
+    </div> <!-- END .site-navbar-wrap --> 
 	
+	<!-- 페이지 -->
+	  <div class="site-blocks-cover" id="home-section">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-md-12 ml-auto align-self-center">
+	            
+	            <div class="intro">
+	              <div class="text">
+	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+	                <br>
+	                <div class="TR">
+	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
+	          
+	                </div>
+	                <br>
+	              </div> 
+	             </div>
+	             
+				<!-- 글 전체 -->		       
+				<div class="d-flex">   	
 	<!-- 카테고리 눌렀을 때, 카테고리별로 리스트를 나오게 함 (네비게이션) -->
 	<div>
 		<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp">[전체]</a>
@@ -119,7 +158,7 @@
 		<button> <a href="<%=request.getContextPath()%>/ebook/deleteEbookAction.jsp">ebook 삭제</a></button>	
 	</form>
 	
-	<!--  row Per Page별 페이징 -->
+	<!--  table -->
 	<table border="1">
 			<th>categoryName</th>
 			<th>ebookISBN</th>
