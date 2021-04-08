@@ -96,132 +96,132 @@
     </div> <!-- END .site-navbar-wrap --> 
 	
 	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
 	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1 class="IN"><span class="text-primary">카테고리</span> 목록</h1>
-	               매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
-					
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
+			<div class="intro">
+				<div class="text">
+					<h1 class="IN"><span class="text-primary">주문</span> 목록</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 	                <br>
-	              </div> 
-	             </div>
+	            </div> 
+	        </div>
 	             
 				<!-- 글 전체 -->		       
 				<div class="d-flex">   
-				<!-- 1 테이블 -->  
-	<!-- 상단 몇개씩보기 -->
-	
-	<form action="<%=request.getContextPath()%>/order/orderList.jsp" method="post">
-		<select name="rowPerPage">
-			<%
-			for (int i=10; i <=30; i+=5){
-				if(rowPerPage == i){
-			%>
-					<option value="<%=i %>" selected="selected"> <%=i %></option>
-			<%
-				} else {
-			%>
-					<option value="<%=i %>"> <%=i %></option>
-			<%
-				}//if끝
-			}//for끝
-			%>
-		</select>
-		<button type="submit">보기</button>
-	</form>
-	
-	<!--  row Per Page별 페이징 -->
-	<table class="table table-second table-hover TC">
-		<thead>
-			<th>orderNo</th>
-			<th>(ebookNo) ebookTitle [ebookISBN]</th>
-			<th>(clientNo) clientMail</th>
-			<th>orderDate</th>
-			<th>orderState수정</th>
-		</thead>
-		
-		<tbody>
-			<%
-			//String searchWord ="";
-			//public static ArrayList<Ebook> selectOrdersListByPage(int rowPerPage, int beginRow) throws Exception { //입력값 필요 없음
-			ArrayList<OrdersAndEbookAndClient> ordersList = OrdersDao.selectOrdersListByPage(beginRow,rowPerPage);
-
-				for(OrdersAndEbookAndClient oec : ordersList){
-				System.out.println(oec.getOrders().getOrdersNo()+"<---주문번호");
-			%>
-				<tr>
-					<td><%=oec.getOrders().getOrdersNo()%></td>
-					<td>
-					
-					<a href="<%=request.getContextPath()%>/ebook/ebookOne.jsp?ebookISBN=<%=oec.getEbook().getEbookISBN()%>">
-					(<%=oec.getOrders().getEbookNo()%>) <%=oec.getEbook().getEbookTitle()%>  [﻿<%=oec.getEbook().getEbookISBN()%>]
-					</a>
-					</td>
-					<td>(<%=oec.getOrders().getClientNo()%>) <%=oec.getClient().getClientMail()%></td>
-					<td><%=oec.getOrders().getOrdersDate()%></td>
-					<td>
-						<form action="<%=request.getContextPath()%>/orders/updateOrdersAction.jsp" method="post">
-						<%=oec.getOrders().getOrdersState()%>
-						
-						<input type="hidden" name="ordersNo" value="<%=oec.getOrders().getOrdersNo()%>">
-						<select name="orderState">
-							<option value="결제확인">결제확인</option>
-							<option value="배송완료">배송완료</option>
-							<option value="주문요청">취소요청</option>
-							<option value="취소완료">취소완료</option>
-						</select>
-						<button type="submit">승인</button>
+                	<!-- 상단 몇개씩보기 -->	
+                	<div class="TR">
+		               	<form action="<%=request.getContextPath()%>/orders/ordersList.jsp" method="post">
+							<select class="form-control IN" name="rowPerPage">
+								<%
+								for (int i=10; i <=30; i+=5){
+									if(rowPerPage == i){
+								%>
+										<option value="<%=i %>" selected="selected"> <%=i %></option>
+								<%
+									} else {
+								%>
+									<option value="<%=i %>"> <%=i %></option>
+								<%
+									}
+								}
+								%>
+							</select>
+							<button class="btn btn-white" type="submit">보기</button>
 						</form>
-					</td>
-				</tr>
-			<%
-				}//for끝
-			%>
-		</tbody>
-	</table>
-	<!-- 페이징 -->
-		
+					</div>
 	
-		<%
-		if(currentPage > 1){//현재 페이지가 1보다 크면 이전이 나오게 해라.
-		%>
-		<a href="<%=request.getContextPath()%>/orders/ordersList.jsp?currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>">이전</a>
-		<%      
-		}//이전 if 끝
-		%>
-		      
-		      
-		<%
-		int totalRow = OrdersDao.totalCount(); //메서드활용
-		int lastPage = totalRow/rowPerPage;
-		System.out.println("\t total Row : "+ totalRow);
-		System.out.println("\t last Page : "+ lastPage);
-		        
-		    
-		if (totalRow% rowPerPage !=0){ //현재 페이지가 전체게시글/페이지행 몫이 딱 떨어지거나. 몫보다 클때.
-			lastPage += 1;  // 잘안씀 lastPage - lastPage+1; lastPage++
-		}//보드 케이블의 총 행수 구하는 if 끝
-		         
-		if(currentPage<lastPage) {//현재 페이지가 라스트 페이지보다 작으면 다음이 나오게 해라.
-		%>
+					<!-- 테이블 -->
+					<table class="table table-second table-hover TC">
+						<thead>
+							<th>orderNo</th>
+							<th>(ebookNo) ebookTitle [ebookISBN]</th>
+							<th>(clientNo) clientMail</th>
+							<th>orderDate</th>
+							<th>orderState수정</th>
+						</thead>
+						
+						<tbody>
+							<%
+							//String searchWord ="";
+							//public static ArrayList<Ebook> selectOrdersListByPage(int rowPerPage, int beginRow) throws Exception { //입력값 필요 없음
+							ArrayList<OrdersAndEbookAndClient> ordersList = OrdersDao.selectOrdersListByPage(beginRow,rowPerPage);
+				
+								for(OrdersAndEbookAndClient oec : ordersList){
+								System.out.println(oec.getOrders().getOrdersNo()+"<---주문번호");
+							%>
+								<tr>
+									<td><%=oec.getOrders().getOrdersNo()%></td>
+									<td>
+									
+									<a href="<%=request.getContextPath()%>/ebook/ebookOne.jsp?ebookISBN=<%=oec.getEbook().getEbookISBN()%>">
+									(<%=oec.getOrders().getEbookNo()%>) <%=oec.getEbook().getEbookTitle()%>  [﻿<%=oec.getEbook().getEbookISBN()%>]
+									</a>
+									</td>
+									<td>(<%=oec.getOrders().getClientNo()%>) <%=oec.getClient().getClientMail()%></td>
+									<td><%=oec.getOrders().getOrdersDate()%></td>
+									<td>
+										<form action="<%=request.getContextPath()%>/orders/updateOrdersAction.jsp" method="post">
+										<%=oec.getOrders().getOrdersState()%>
+										
+										<input type="hidden" name="ordersNo" value="<%=oec.getOrders().getOrdersNo()%>">
+										<select name="ordersState">
+											<option value="결제확인">결제확인</option>
+											<option value="배송완료">배송완료</option>
+											<option value="주문요청">취소요청</option>
+											<option value="취소완료">취소완료</option>
+										</select>
+										<button class="btn btn-primary" type="submit">승인</button>
+										</form>
+									</td>
+								</tr>
+							<%
+								}//for끝
+							%>
+						</tbody>
+					</table>
+					
+					<!-- 페이징 -->
+					<div>
+					<%
+					if(currentPage > 1){//현재 페이지가 1보다 크면 이전이 나오게 해라.
+					%>
+					<a href="<%=request.getContextPath()%>/orders/ordersList.jsp?currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>">이전</a>
+					<%      
+					}//이전 if 끝
+					%>
+					      
+					      
+					<%
+					int totalRow = OrdersDao.totalCount(); //메서드활용
+					int lastPage = totalRow/rowPerPage;
+					System.out.println("\t total Row : "+ totalRow);
+					System.out.println("\t last Page : "+ lastPage);
+					        
+					    
+					if (totalRow% rowPerPage !=0){ //현재 페이지가 전체게시글/페이지행 몫이 딱 떨어지거나. 몫보다 클때.
+						lastPage += 1;  // 잘안씀 lastPage - lastPage+1; lastPage++
+					}//보드 케이블의 총 행수 구하는 if 끝
+					         
+					if(currentPage<lastPage) {//현재 페이지가 라스트 페이지보다 작으면 다음이 나오게 해라.
+					%>
+					
+					<a href="<%=request.getContextPath()%>/orders/ordersList.jsp?currentPage=<%=currentPage+1%>&rowPerPage=<%=rowPerPage%>">다음</a>
+					
+					<% 
+					}//다음 if끝
+					%>
+					</div>
 		
-		<a href="<%=request.getContextPath()%>/orders/ordersList.jsp?currentPage=<%=currentPage+1%>&rowPerPage=<%=rowPerPage%>">다음</a>
+		</div>
 		
-		<% 
-		}//다음 if끝
-		%>
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	
 	</div>
 </body>
 </html>

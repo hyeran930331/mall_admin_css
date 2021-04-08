@@ -14,13 +14,13 @@
 	//수집
 	request.setCharacterEncoding("utf-8");
 	int ordersNo = Integer.parseInt(request.getParameter("ordersNo"));
-	String orderState = request.getParameter("orderState");
+	String orderState = request.getParameter("ordersState");
 	
 	//디버깅
 	System.out.printf("\n ordersNo: %s,orderState: %s <updateOrdersAction.jsp>\n",ordersNo,orderState );
 	
 	//카테고리 수정 메서드 호출
-	OrdersDao.updateState(orderState, ordersNo);
+	OrdersDao.updateState(ordersState, ordersNo);
 	
 	//카테고리 목록으로 돌아가기
 	System.out.println("----------수정 완료----------");

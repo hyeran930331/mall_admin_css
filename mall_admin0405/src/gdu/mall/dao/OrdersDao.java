@@ -39,7 +39,7 @@ public class OrdersDao {
 	}	
 	
 	// 수정 메서드
-	public static void updateState (String ordersState, int ordersNo) throws Exception{
+	public static void updateState(String ordersState, int ordersNo) throws Exception{
 	System.out.println("~~~~~~~~~~~~~~~업데이트 스테이트 실행~~~~~~~~~~~~~~~");
 		// 1.쿼리 정의
 		/*
