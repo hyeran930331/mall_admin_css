@@ -120,8 +120,10 @@
 	            
 	            <div class="intro">
 	              <div class="text">
-	              	<h1><span class="text-primary">고객</span> 목록</h1>
-	                <br>
+	             	<p>
+	              	<h1 class="IN"><span class="text-primary">고객</span> 목록</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
+					</p>
 	                <div class="TR">
 	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
 	          
@@ -167,7 +169,6 @@
 				
 			<%
 			for(Client c: list){ //c 리스트가 있다면, 없을때까지
-				System.out.println ("list : "+list);
 			%>
 				<tr>
 				<tbody>
@@ -184,7 +185,7 @@
 					</td>
 					<td>
 						
-						<a class="btn btn-info" href="<%=request.getContextPath()%>/client/deleteClientActon.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
+						<a class="btn btn-info" href="<%=request.getContextPath()%>/client/deleteClientAction.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
 						<!-- ?clientMail=< % = c . getClientMail() % > 를  method="post" 해야 넘어간다. -->
 							삭제
 						</a>
