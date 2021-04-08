@@ -176,11 +176,7 @@
 					<td> <%=c.getClientDate()%> </td>
 					<td>
 						
-						<a class="btn btn-primary" href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>"  method="post">
-						
-							수정
-							
-						</a>
+						<a class="btn btn-primary" href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">수정</a>
 						
 					</td>
 					<td>

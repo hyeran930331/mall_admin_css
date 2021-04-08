@@ -115,11 +115,9 @@
 			<td>PW</td>
 			<td>
 				<input type="text" name="clientPw" value="<%=c.getClientPw() %>">
-				<button type="submit">수정</button>
 			</td>
 		</tr>
-	</form>
-					
+
 		<tr>
 			<td><button type="submit">등록</button> </td>
 			<td><a href="<%=request.getContextPath()%>/client/clientInsertForm.jsp">홈</a></td>
