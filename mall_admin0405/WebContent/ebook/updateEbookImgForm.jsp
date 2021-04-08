@@ -35,8 +35,20 @@
 	%>
 
 	<%
-		String ebookISBN = request.getParameter("ebookISBN");
+	String ebookISBN = request.getParameter("ebookISBN");
 	%>
+	
+	<%
+	System.out.println("\n----------insert Ebookt Form.jsp 실행----------");
+	
+	// 세션 검사 관리자 권한 1 이상만 볼 수 있도록.
+	Manager m = (Manager)session.getAttribute("sessionManager");
+	if(m == null || m.getManagerLevel() < 1){
+		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
+		return;
+	}
+	%>
+	<!-- 3. 출력 -->
   <!-- 전체를 감싸는-->
   <div class="site-wrap">
   
@@ -69,37 +81,35 @@
       </div>
     </div> <!-- END .site-navbar-wrap --> 
 	
-	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
+		<!-- 페이지 -->
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
 	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+			<div class="intro">
+				<div class="text-center">
+					<h1 class="IN"><span class="text-primary">Ebook</span> 이미지</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 	                <br>
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
 	                <br>
-	              </div> 
-	             </div>
-	             
-				<!-- 글 전체 -->		       
-				<div class="d-flex">   
-				<!-- 1 테이블 -->  
-	<form enctype="multipart/form-data" action="<%=request.getContextPath()%>/ebook/updateEbookImgAction.jsp?ebookISBN=<%=ebookISBN%>" method="post">
-	<!-- application/x-www-form-urlencoded 글자만 -->
-	<!-- 파일타입 multipart/form-data -->
-		<input type="hidden" name="ebookISBN" value="<%=ebookISBN%>">
-		<input type="file" name="ebookImg">
-		<button type="submit">이미지 수정</button>
-	</form>
+					<!-- 글 전체 -->		          
+					<!-- 1 테이블 -->  
+					<form enctype="multipart/form-data" action="<%=request.getContextPath()%>/ebook/updateEbookImgAction.jsp?ebookISBN=<%=ebookISBN%>" method="post">
+					<!-- application/x-www-form-urlencoded 글자만 -->
+					<!-- 파일타입 multipart/form-data -->
+						<input type="hidden" name="ebookISBN" value="<%=ebookISBN%>">
+						<input class="form-group" type="file" name="ebookImg">
+						<button class="btn btn-primary" type="submit">이미지 수정</button>
+					</form>
+			</div>
+			
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		
+	</div>
+	
 </body>
 </html>

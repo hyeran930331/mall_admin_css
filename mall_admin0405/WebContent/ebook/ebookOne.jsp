@@ -86,128 +86,122 @@
     </div> <!-- END .site-navbar-wrap --> 
 	
 	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
 	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+			<div class="intro">
+				<div class="text">
+					<h1 class="IN"><span class="text-primary">ebook</span> 상세</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 	                <br>
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
-	                <br>
-	              </div> 
-	             </div>
+	            </div> 
+	        </div>
 	             
-				<!-- 글 전체 -->		       
-				<div class="d-flex">   
+			<!-- 글 전체 -->		       
+			<div class="d-flex">   
 				<!-- 1 테이블 -->  
-	<table class="table table-second table-hover TC">
-		<tr>
-			<th>ebookNO</th>
-			<td><%=e.getEbookNo()%></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<th>categoryName</th>
-			<td><%=e.getCategoryName()%></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<th>ebookTitle</th>
-			<td><%=e.getEbookTitle()%></td>
-			<td>&nbsp;</td>
-		</tr>
-		<form action="<%=request.getContextPath()%>/ebook/updateEbookStateAction.jsp">
-			<tr>
-				<th>ebookState</th>
-				<td>
-				<%=e.getEbookState()%> : 
-				<input type="hidden" value="<%=ebookISBN%>" name="ebookISBN">
-				<select name="ebookState">
-						<option value="판매중">판매중</option>
-						<option value="품절">품절</option>
-						<option value="절판">절판</option>
-						<option value="구편절판">구편절판</option>
-				</select>
-				</td>
-				<td>
-					<button type="submit">책상태 수정</button>
-				</td>
-			</tr>
-		</form>
-		<tr>
-			<th>ebookAuthor</th>
-			<td><%=e.getEbookAuthor()%></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<th>ebookImg</th>
-			<td><img width="125px" height="150px" src="<%=request.getContextPath()%>/img/<%=e.getEbookImg()%>"></td>
-			<td>
-				<a href="<%=request.getContextPath()%>/ebook/updateEbookImgForm.jsp?ebookISBN=<%=e.getEbookISBN()%>">
-					<button type="button">이미지 수정</button>
-				</a>
-			</td>
-		</tr>
-		<tr>
-			<th>ebookISBN</th>
-			<td><%=e.getEbookISBN()%></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<th>ebookCompany</th>
-			<td><%=e.getEbookCompany()%></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<th>ebookDate</th>
-			<td><%=e.getEbookDate()%></td>
-			<td>&nbsp;</td>
-		</tr>
-		<form action="<%=request.getContextPath()%>/ebook/updateEbookSummaryAction.jsp">
-			<tr>
-				<th>ebookSummary</th>
-				<td>
-				<input type="hidden" value="<%=e.getEbookISBN()%>" name="ebookISBN">
-				<textarea cols="50", rows="5" name="ebookSummary"><%=e.getEbookSummary()%></textarea>
-				</td>
-				<td>
-					<button type="button">책요약 수정</button>
-				</td>
-			</tr>
-		</form>
-		<tr>
-			<th>ebookPrice</th>
-			<td><%=e.getEbookPrice()%></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<th>ebookPageCount</th>
-			<td><%=e.getEbookPageCount()%></td>
-			<td>&nbsp;</td>
-		</tr>
-	</table>
+				<table class="table table-second table-hover TC">
+					<tr>
+						<th>ebookNO</th>
+						<td><%=e.getEbookNo()%></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<th>categoryName</th>
+						<td><%=e.getCategoryName()%></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<th>ebookTitle</th>
+						<td><%=e.getEbookTitle()%></td>
+						<td>&nbsp;</td>
+					</tr>
+					
+					<tr>
+					<form action="<%=request.getContextPath()%>/ebook/updateEbookStateAction.jsp?">
+						<th>ebookState</th>
+						<td>
+							<%=e.getEbookState()%> : 
+							<input type="hidden" value="<%=ebookISBN%>" name="ebookISBN">
+							<select name="ebookState">
+									<option value="판매중">판매중</option>
+									<option value="품절">품절</option>
+									<option value="절판">절판</option>
+									<option value="구편절판">구편절판</option>
+							</select>
+						</td>
+						<td>
+							<button class="btn btn-white" type="submit">책상태 수정</button>
+						</td>
+					</form>
+					</tr>
+					
+					<tr>
+						<th>ebookAuthor</th>
+						<td><%=e.getEbookAuthor()%></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<th>ebookImg</th>
+						<td><img width="125px" height="150px" src="<%=request.getContextPath()%>/img/<%=e.getEbookImg()%>"></td>
+						<td>
+							<a class="btn btn-white" href="<%=request.getContextPath()%>/ebook/updateEbookImgForm.jsp?ebookISBN=<%=e.getEbookISBN()%>">이미지 수정</a>
+						</td>
+					</tr>
+					<tr>
+						<th>ebookISBN</th>
+						<td><%=e.getEbookISBN()%></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<th>ebookCompany</th>
+						<td><%=e.getEbookCompany()%></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<th>ebookDate</th>
+						<td><%=e.getEbookDate()%></td>
+						<td>&nbsp;</td>
+					</tr>
+					
+					<tr>
+					<form action="<%=request.getContextPath()%>/ebook/updateEbookSummaryAction.jsp">
+						<th>ebookSummary</th>
+						<td>
+							<input type="hidden" value="<%=e.getEbookISBN()%>" name="ebookISBN">
+							<textarea cols="50" rows="5" name="ebookSummary"><%=e.getEbookSummary()%></textarea>
+						</td>
+						<td>
+							<button class="btn btn-white" type="submit">책요약 수정</button>
+						</td>
+					</form>		
+					</tr>
+					
+					
+					<tr>
+						<th>ebookPrice</th>
+						<td><%=e.getEbookPrice()%></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<th>ebookPageCount</th>
+						<td><%=e.getEbookPageCount()%></td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
 	
-	<button type="button">
-	<a href="<%=request.getContextPath()%>/ebook/updateEbookForm.jsp?ebookISBN=<%=e.getEbookISBN()%>">
-		전체 수정(이미지 제외)
-	</a>
-	</button>
-	
-	<button type="button">	
-	<a href="<%=request.getContextPath()%>/ebook/deleteEbookAction.jsp?ebookISBN=<%=e.getEbookISBN()%>">
-		삭제
-	</a>
-	</button>
+				<a class="btn btn-primary" href="<%=request.getContextPath()%>/ebook/updateEbookForm.jsp?ebookISBN=<%=e.getEbookISBN()%>">전체 수정(이미지 제외)</a>
+				
+				<a class="btn btn-info" href="<%=request.getContextPath()%>/ebook/deleteEbookAction.jsp?ebookISBN=<%=e.getEbookISBN()%>">삭제</a>
+				
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	
 	</div>
+	
 </body>
 </html>

@@ -21,9 +21,9 @@
 	
  	//강제지정, 바로확인, 폴더에서도 확인
  	//폴더확인
- 	//String path = "D:/goodee/web/mall_admin/WebContent/img";//학원
+ 	String path = "C:/Users/GDJ34/git/mall_admin_css/mall_admin_css/mall_admin0405/WebContent/img";//학원
  	//폴더확인
- 	String path = "C:/Users/82106/Desktop/goodee/mall_admin0329/WebContent/img"; //노트북
+ 	//String path = "C:/Users/82106/Desktop/goodee/mall_admin0329/WebContent/img"; //노트북
  	System.out.println(path); 
  	
  	int size = 1024 * 1024 * 500; // 500MB

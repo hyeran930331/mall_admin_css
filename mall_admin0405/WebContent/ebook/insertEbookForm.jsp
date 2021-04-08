@@ -35,6 +35,13 @@
 	%>
 	<%
 	System.out.println("\n----------insert Ebookt Form.jsp 실행----------");
+	
+	// 세션 검사 관리자 권한 1 이상만 볼 수 있도록.
+	Manager m = (Manager)session.getAttribute("sessionManager");
+	if(m == null || m.getManagerLevel() < 1){
+		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
+		return;
+	}
 	%>
 	<!-- 3. 출력 -->
   <!-- 전체를 감싸는-->
@@ -70,124 +77,125 @@
     </div> <!-- END .site-navbar-wrap --> 
 	
 	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
 	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+			<div class="intro">
+				<div class="text">
+					<h1 class="IN"><span class="text-primary">Ebook</span> 등록</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 	                <br>
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
-	                <br>
-	              </div> 
-	             </div>
+				</div> 
+			</div>
 	             
-				<!-- 글 전체 -->		       
-				<div class="d-flex">   
-				<!-- 1 테이블 -->  
-	<form action="<%=request.getContextPath()%>/ebook/insertEbookAction.jsp">
-		<table class="table table-second table-hover TC">
-			<tr>
-				<th> <!-- 0 -->
-					categoryName
-				</th>
-				<td>
-				<!-- 카테고리 눌렀을 때, 카테고리별로 리스트를 나오게 함 (네비게이션) -->
-				<div>	
-				<%
-					//public static ArrayList<String> categoryNameList() throws Exception{
-					ArrayList<String> list3 = CategoryDao.categoryNameList();
-					System.out.println(list3.size()+"<---카테고리네임리스트 크기");
-				%>
-					<select name="categoryName">	
-						<%
-						for(String ct : list3){
-						%>
-							<option value="<%=ct%>"><%=ct%></option>
-						<%
-						}
-						%>
-					</select>
-				</div>
-				</td>
-			</tr>
+			<!-- 글 전체 -->		       
+			<div class="d-flex TR">   
+			<!-- 1 테이블 -->  
+			<form action="<%=request.getContextPath()%>/ebook/insertEbookAction.jsp">
+				<button class="btn btn-primary" type="submit">이북추가</button>
+				<table class="table table-second table-hover TC">
+					<tr>
+						<th> <!-- 0 -->
+							categoryName
+						</th>
+						
+						<td>
+						<!-- 카테고리 눌렀을 때, 카테고리별로 리스트를 나오게 함 (네비게이션) -->
+						<div>	
+							<%
+							//public static ArrayList<String> categoryNameList() throws Exception{
+							ArrayList<String> list3 = CategoryDao.categoryNameList();
+							System.out.println(list3.size()+"<---카테고리네임리스트 크기");
+							%>
+							
+							<select name="categoryName">	
+							<%
+							for(String ct : list3){
+							%>
+								<option value="<%=ct%>"><%=ct%></option>
+							<%
+							}
+							%>
+							</select>
+						</div>
+						</td>
+					</tr>
 			
-			<tr> <!-- 1 -->
-				<th>
-					ebookISBN
-				</th>
-				<td>
-					<input type="text" name="ebookISBN">
-				</td>
-			</tr>
+					<tr> <!-- 1 -->
+						<th>
+							ebookISBN
+						</th>
+						<td>
+							<input type="text" name="ebookISBN">
+						</td>
+					</tr>
 			
-			<tr> <!-- 2 -->
-				<th>
-					ebookTitle
-				</th>
-				<td>
-					<input type="text" name="ebookTitle">
-				</td>
-			</tr>
-			
-			<tr> <!-- 3 -->
-				<th>
-					ebookAuthor
-				</th>
-				<td>
-					<input type="text" name="ebookAuthor">
-				</td>
-			</tr>
-			
-			<tr> <!-- 4 -->
-				<th>
-					ebookPrice
-				</th>
-				<td>
-					<input type="text" name="ebookPrice">
-				</td>
-			</tr>
-			
-			<tr> <!-- 5 -->
-				<th>
-					ebookCompany
-				</th>
-				<td>
-					<input type="text" name="ebookCompany">
-				</td>
-			</tr>
-			
-			<tr> <!-- 6 -->
-				<th>
-					ebookPageCount
-				</th>
-				<td>
-					<input type="text" name="ebookPageCount">
-				</td>
-			</tr>
-			
-			<tr> <!-- 7 -->
-				<th>
-					ebookSummary
-				</th>
-				<td>
-					<textarea rows="5" cols="80" name="ebookSummary"> </textarea>
-				</td>
-			</tr>
+					<tr> <!-- 2 -->
+						<th>
+							ebookTitle
+						</th>
+						<td>
+							<input type="text" name="ebookTitle">
+						</td>
+					</tr>
+					
+					<tr> <!-- 3 -->
+						<th>
+							ebookAuthor
+						</th>
+						<td>
+							<input type="text" name="ebookAuthor">
+						</td>
+					</tr>
+					
+					<tr> <!-- 4 -->
+						<th>
+							ebookPrice
+						</th>
+						<td>
+							<input type="text" name="ebookPrice">
+						</td>
+					</tr>
+					
+					<tr> <!-- 5 -->
+						<th>
+							ebookCompany
+						</th>
+						<td>
+							<input type="text" name="ebookCompany">
+						</td>
+					</tr>
+					
+					<tr> <!-- 6 -->
+						<th>
+							ebookPageCount
+						</th>
+						<td>
+							<input type="text" name="ebookPageCount">
+						</td>
+					</tr>
+					
+					<tr> <!-- 7 -->
+						<th>
+							ebookSummary
+						</th>
+						<td>
+							<textarea rows="5" cols="80" name="ebookSummary"> </textarea>
+						</td>
+					</tr>
 			
 			<!-- 이미지, 스테이트, 데이트, 번호는 자동생성  -->
 		</table>
-	<button type="submit">이북추가</button>
-	</form>
+		</form>
+	
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	
 	</div>
+	
 </body>
 </html>
