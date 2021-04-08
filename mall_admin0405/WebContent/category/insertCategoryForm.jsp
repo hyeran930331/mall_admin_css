@@ -91,6 +91,10 @@
 					<br>
 		  		</div> 
 			</div>
+			
+			<div>
+				<a class="btn btn-white" href="<%=request.getContextPath()%>/category/categoryList.jsp">카테고리 목록</a>
+			</div>
 	             
 			<!-- 글 전체 -->		       
 			<div class="d-flex">   
@@ -117,7 +121,6 @@
 	</div>
 
 </div> 
-
 
 </body>
 </html>
