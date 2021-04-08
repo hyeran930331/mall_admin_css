@@ -124,10 +124,6 @@
 	              	<h1 class="IN"><span class="text-primary">고객</span> 목록</h1>
 	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 					</p>
-	                
-	                <div class="TR">
-						<a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-		          	</div>
 	                <br>
 				</div> 
 			</div>
