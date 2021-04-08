@@ -24,6 +24,7 @@
 		<a href="<%=request.getContextPath()%>/category/categoryList.jsp">카테고리 목록</a>
 	</div>
 	<h1>카테고리 등록</h1>
+	
 	<form action="<%=request.getContextPath()%>/category/insertCategoryAction.jsp" method="post">
 		<table border="1">
 			<tr>

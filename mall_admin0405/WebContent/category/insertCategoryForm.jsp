@@ -80,23 +80,20 @@
 		
 	<!-- 1 매니저-->
 	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
-	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 등록</h1>
-	                <br>
-	                <div class="TR">
-	                 
-	                </div>
-	                <br>
-	              </div> 
-	             </div>
+	  <div class="container">
+	  <div class="row">
+	  <div class="col-md-12 ml-auto align-self-center">
+	  
+			<div class="intro">
+				<div class="text">
+					<h1 class="IN"><span class="text-primary">카테고리</span> 등록</h1>
+					매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
+					<br>
+		  		</div> 
+			</div>
 	             
-				<!-- 매니저 글 전체 -->		       
-				<div class="d-flex">   
+			<!-- 글 전체 -->		       
+			<div class="d-flex">   
 				<!-- 1 테이블 -->          		
 				<form action="<%=request.getContextPath()%>/category/insertCategoryAction.jsp" method="post">
 				<table class="table table-second table-hover TC">
@@ -109,17 +106,18 @@
 						<td><input type="text" name="categoryWeight" readonly="readonly" value="0"></td><!-- 초기값 0 이후 수정해서 사용 -->
 					</tr>
 				</table>
-				
+					
 					<button class="btn btn-primary" type="submit">등록</button>
 				</form>
-				</div>
-		
 			</div>
-		</div>
+		
 	</div>
-</div>
+	</div>
+	</div>
+	</div>
+
 </div> 
-</div>
+
 
 </body>
 </html>
