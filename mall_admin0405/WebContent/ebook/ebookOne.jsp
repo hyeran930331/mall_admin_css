@@ -96,7 +96,7 @@
 					<h1 class="IN"><span class="text-primary">ebook</span> 상세</h1>
 	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 	                <br>
-	                <a class="btn btn-success" href="<%=request.getContextPath()%>/ebook/ebookList.jsp%>">돌아가기</a>
+	                <a class="btn btn-success" href="<%=request.getContextPath()%>/ebook/ebookList.jsp">돌아가기</a>
 	            </div> 
 	        </div>
 	             

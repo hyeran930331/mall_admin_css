@@ -46,10 +46,6 @@
 	request.setCharacterEncoding("utf-8");
 	%>
 
-	<!-- 관리자화면 메뉴(네비게이션) include -->
-		<div>
-			<jsp:include page="/inc/adminMenu.jsp"></jsp:include>
-		</div><!-- 인클루드는 프로젝트 명이 필요없다 -->
 	<%
 	//수집
 	String ebookISBN = request.getParameter("ebookISBN");
@@ -100,10 +96,9 @@
 	            
 	            <div class="intro">
 	              <div class="text">
-	              	<h1><span class="text-primary">ebook</span> 수정</h1>
+	              	<h1 class="IN"><span class="text-primary">ebook</span> 수정</h1>
 	              	매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
-	                <br>
-	                <a class="btn btn-success" href="<%=request.getContextPath()%>/ebook/ebookOne.jsp?ebookISBN=<%=e.getEbookISBN()%>">돌아가기</a>
+	                <a class="btn btn-success" href="<%=request.getContextPath()%>/ebook/ebookOne.jsp?ebookISBN=<%=ebookISBN%>">돌아가기</a>
 	                <br>
 	              </div> 
 	             </div>
@@ -111,99 +106,102 @@
 				<!-- 글 전체 -->		       
 				<div class="d-flex">   
 				<!-- 1 테이블 -->  
-	<form action="<%=request.getContextPath()%>/ebook/updateEbookAction.jsp?ebookISBN=<%=ebookISBN%>">
-	<table class="table table-second table-hover TC">
-		<tr>
-			<th>ebookNO</th>
-			<td>수정 불가 : <%=e.getEbookNo()%>
-			</td>
-		</tr>
-		
-		<tr>
-			<th>categoryName</th>
-			<td>
-			<div>	
-				<%
-				//public static ArrayList<String> categoryNameList() throws Exception{
-				ArrayList<String> list3 = CategoryDao.categoryNameList();
-				System.out.println(list3.size()+"<---카테고리네임리스트 크기");
-				%>
-				<select name="categoryName">	
-					<%
-					for(String ct : list3){
-					%>
-						<option value="<%=ct%>"><%=ct%></option>
-					<%
-					}
-					%>
-					</select>
-				</div>		
-			</td>
-		</tr>
-		
-		<tr>
-			<th>ebookTitle</th>
-			<td>
-			<input type="text" name="ebookTitle" value="<%=e.getEbookTitle()%>">
-			</td>
-		</tr>
-		
-		<tr>
-			<th>ebookState</th>
-			<td>
-			<%=e.getEbookState()%> 
-			<select name="ebookState">
-				<option value="판매중">판매중</option>
-				<option value="품절">품절</option>
-				<option value="절판">절판</option>
-				<option value="구편절판">구편절판</option>
-			</select>
-			</td>
-		</tr>
-		
-		<tr>
-			<th>ebookAuthor</th>
-			<td><input type="text" name="ebookAuthor" value="<%=e.getEbookAuthor()%>"></td>
-		</tr>
-		
-		<tr>
-			<th>ebookISBN</th>
-			<td>수정불가 : <%=e.getEbookISBN()%>
-				<input type="hidden" name="ebookISBN" value="<%=e.getEbookISBN()%>">
-			</td>
-		</tr>
-		<tr>
-			<th>ebookCompany</th>
-			<td><input type="text" name="ebookCompany" value="<%=e.getEbookCompany()%>"></td>
-		</tr>
-		<tr>
-			<th>ebookDate</th>
-			<td>수정불가 <%=e.getEbookDate()%>
-			</td>
-		</tr>
-		<tr>
-			<th>ebookSummary</th>
-			<td>
-				<textarea rows="5" cols="50" name="ebookSummary"><%=e.getEbookSummary()%></textarea>
-			</td>
-		</tr>
-		<tr>
-			<th>ebookPrice</th>
-			<td><input type="text" name="ebookPrice" value="<%=e.getEbookPrice()%>"></td>
-		</tr>
-		
-		<tr>
-			<th>ebookPageCount</th>
-			<td><input type="text" name="ebookPageCount" value="<%=e.getEbookPageCount()%>"></td>
-		</tr>
-	</table>
-	
-	<button type="submit">수정</button>
-	</form>
+				<form action="<%=request.getContextPath()%>/ebook/updateEbookAction.jsp?ebookISBN=<%=ebookISBN%>">
+					<div class="TR">
+						<button class="btn btn-primary" type="submit">수정</button>
+					</div>
+				<table class="table table-second table-hover TC">
+					<tr>
+						<th>ebookNO</th>
+						<td>수정 불가 : <%=e.getEbookNo()%>
+						</td>
+					</tr>
+					
+					<tr>
+						<th>categoryName</th>
+						<td>
+						<div>	
+							<%
+							//public static ArrayList<String> categoryNameList() throws Exception{
+							ArrayList<String> list3 = CategoryDao.categoryNameList();
+							System.out.println(list3.size()+"<---카테고리네임리스트 크기");
+							%>
+							<select name="categoryName">	
+								<%
+								for(String ct : list3){
+								%>
+									<option value="<%=ct%>"><%=ct%></option>
+								<%
+								}
+								%>
+								</select>
+							</div>		
+						</td>
+					</tr>
+					
+					<tr>
+						<th>ebookTitle</th>
+						<td>
+						<input type="text" name="ebookTitle" value="<%=e.getEbookTitle()%>">
+						</td>
+					</tr>
+					
+					<tr>
+						<th>ebookState</th>
+						<td>
+						<%=e.getEbookState()%> 
+						<select name="ebookState">
+							<option value="판매중">판매중</option>
+							<option value="품절">품절</option>
+							<option value="절판">절판</option>
+							<option value="구편절판">구편절판</option>
+						</select>
+						</td>
+					</tr>
+					
+					<tr>
+						<th>ebookAuthor</th>
+						<td><input type="text" name="ebookAuthor" value="<%=e.getEbookAuthor()%>"></td>
+					</tr>
+					
+					<tr>
+						<th>ebookISBN</th>
+						<td>수정불가 : <%=e.getEbookISBN()%>
+							<input type="hidden" name="ebookISBN" value="<%=e.getEbookISBN()%>">
+						</td>
+					</tr>
+					<tr>
+						<th>ebookCompany</th>
+						<td><input type="text" name="ebookCompany" value="<%=e.getEbookCompany()%>"></td>
+					</tr>
+					<tr>
+						<th>ebookDate</th>
+						<td>수정불가 <%=e.getEbookDate()%>
+						</td>
+					</tr>
+					<tr>
+						<th>ebookSummary</th>
+						<td>
+							<textarea rows="5" cols="100" name="ebookSummary"><%=e.getEbookSummary()%></textarea>
+						</td>
+					</tr>
+					<tr>
+						<th>ebookPrice</th>
+						<td><input type="text" name="ebookPrice" value="<%=e.getEbookPrice()%>"></td>
+					</tr>
+					
+					<tr>
+						<th>ebookPageCount</th>
+						<td><input type="text" name="ebookPageCount" value="<%=e.getEbookPageCount()%>"></td>
+					</tr>
+				</table>
+				</form>
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		
 	</div>
+	
 </body>
 </html>
