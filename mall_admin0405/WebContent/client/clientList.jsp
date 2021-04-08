@@ -136,7 +136,7 @@
 		<!-- 상단 몇개씩보기 -->
 		<form action="<%=request.getContextPath()%>/client/clientList.jsp" method="post">
 			<input type="hidden" name="searchWord" value="<%=searchWord%>">
-			<select name="rowPerPage">
+			<select class="custom-select"  id="inputGroup-sizing-sm" name="rowPerPage">
 				<%
 				for (int i=10; i <=30; i+=5){
 					if(rowPerPage == i){
@@ -151,7 +151,7 @@
 				}
 				%>
 			</select>
-			<button type="submit">보기</button>
+			<button class="btn btn-white" type="submit">보기</button>
 		</form>
 		
 		<!-- 고객표 -->
@@ -175,20 +175,20 @@
 					<td> <%=c.getClientDate()%> </td>
 					<td>
 						
-						<a href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>"  method="post">
-						<button>
+						<a class="btn btn-primary" href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>"  method="post">
+						
 							수정
-						</button>	
+							
 						</a>
 						
 					</td>
 					<td>
-						<button>
-						<a href="<%=request.getContextPath()%>/client/deleteClientActon.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
+						
+						<a class="btn btn-info" href="<%=request.getContextPath()%>/client/deleteClientActon.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
 						<!-- ?clientMail=< % = c . getClientMail() % > 를  method="post" 해야 넘어간다. -->
 							삭제
 						</a>
-						</button>
+					
 					</td>
 				</tr>
 				</tbody>
@@ -232,8 +232,8 @@
 		<!-- 검색기능 -->
 		<form action="<%=request.getContextPath()%>/client/clientList.jsp" method="post">
 			<input type="hidden" name="rowPerPage" value="<%=rowPerPage%>">
-			clientMail : <input type="text" name="searchWord" >
-			<button type="submit"> 
+			clientMail : <input class="form-control" type="text" name="searchWord" placeholder="<%=searchWord%>" >
+			<button class="btn btn-white" type="submit"> 
 			검색
 			</button>
 		</form>
