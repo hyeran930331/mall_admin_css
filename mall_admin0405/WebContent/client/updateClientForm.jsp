@@ -38,6 +38,16 @@
 	System.out.println("\n----------updateClientForm.jsp 실행 ---------");
 	// 0. 전처리
 	Client c = (Client)(session.getAttribute("sessionClient"));
+	
+	// 0. 전처리 레벨2 이하 접근제한
+	Manager m = (Manager)(session.getAttribute("sessionManager"));
+	if(m==null){
+		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
+		return;
+	} else if(m.getManagerLevel() < 2){
+		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
+		return;
+	}
 	%>
 	
 	<!-- 3.출력 -->
