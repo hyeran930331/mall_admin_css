@@ -175,12 +175,12 @@
 							<td> <%=c.getClientDate()%> </td>
 							<td>
 								
-								<a class="btn btn-primary" href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">수정</a>
+								<a class="btn btn-primary" href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>" method="post">수정</a>
 								
 							</td>
 							<td>
 								
-								<a class="btn btn-info" href="<%=request.getContextPath()%>/client/deleteClientAction.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
+								<a class="btn btn-info" href="<%=request.getContextPath()%>/client/deleteClientAction.jsp?clientMail=<%=c.getClientMail()%>" method="post">
 								<!-- ?clientMail=< % = c . getClientMail() % > 를  method="post" 해야 넘어간다. -->
 									삭제
 								</a>
