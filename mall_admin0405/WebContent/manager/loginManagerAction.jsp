@@ -12,12 +12,12 @@
 	
 	// 2. 처리
 	Manager manager = ManagerDao.login(managerId, managerPw);
-	System.out.println(manager);
+	System.out.println("----- 목록에 있으면 @/없으면 null : "+manager);
 	if(manager != null) {
 		System.out.println("-----로그인 성공!");
 		session.setAttribute("sessionManager", manager);
 	} else {
-		System.out.println("-----로그인 실패?");
+		System.out.println("-----로그인 실패");
 	}
 	
 	// 3. 출력 or 재요청(redirect)
