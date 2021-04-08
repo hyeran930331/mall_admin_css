@@ -57,9 +57,9 @@ public class ClientDao {
 			stmt.setInt(2,rowPerPage);
 			System.out.println("\t 검색어없는 stmt : "+stmt);
 		}else { // 검색어가 있으면,
-			sql = "SELECT client_mail clientMail, left(client_date,10) clientDate, client_no clientNo FROM client WHERE client_mail like ? ORDER BY client_date DESC  Limit ?, ? ";
+			sql = "SELECT client_mail clientMail, left(client_date,10) clientDate, client_no clientNo FROM client WHERE client_mail like %?% ORDER BY client_date DESC  Limit ?, ? ";
 			stmt= conn.prepareStatement(sql);
-			stmt.setString(1,"%"+searchWord+"%");
+			stmt.setString(1,searchWord);
 			stmt.setInt(2,beginRow);
 			stmt.setInt(3,rowPerPage);
 			System.out.println("\t 검색어있는 stmt : "+stmt);

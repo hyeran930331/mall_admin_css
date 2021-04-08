@@ -66,7 +66,12 @@
 		int beginRow = (currentPage -1) *rowPerPage ;
 		
 	
-		String searchWord ="";
+		//검색어
+		String searchWord = "";
+		if(request.getParameter("searchWord") != null){
+			searchWord = request.getParameter("searchWord");
+			System.out.printf("searchWord: %s <managerList.searchWord> \n",searchWord);
+		}	
 		ArrayList<Client> list = ClientDao.selectClientListByPage(beginRow,rowPerPage,searchWord);
 	%>
 	
@@ -170,7 +175,7 @@
 					<td> <%=c.getClientDate()%> </td>
 					<td>
 						
-						<a href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>"  method="post">
+						<a href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>"  method="post">
 						<button>
 							수정
 						</button>	
@@ -179,7 +184,7 @@
 					</td>
 					<td>
 						<button>
-						<a href="<%=request.getContextPath()%>/client/deleteClientActon.jsp?clientMail=<%=c.getClientMail()%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
+						<a href="<%=request.getContextPath()%>/client/deleteClientActon.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
 						<!-- ?clientMail=< % = c . getClientMail() % > 를  method="post" 해야 넘어간다. -->
 							삭제
 						</a>
