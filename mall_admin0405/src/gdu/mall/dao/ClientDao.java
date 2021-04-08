@@ -26,7 +26,7 @@ public class ClientDao {
 		ResultSet rs = stmt.executeQuery();
 		
 		if(rs.next()) {
-			
+			System.out.println("\t 목록 있음");
 			totalRow = rs.getInt("count(*)");
 		}
 		
@@ -35,6 +35,43 @@ public class ClientDao {
 		
 		return totalRow;
 	}
+	
+	//셀렉스 원 메서드
+	public static Client selectClientOne(String clientMail) throws Exception{
+		System.out.println("~~~~~~~~~~~~~~~~ 셀렉트 클라이언트원 메서드 ~~~~~~~~~~~~~~~");
+		//1. 쿼리는 뒤에 쓰는걸로
+		
+		//2.
+		
+		//3.
+		Connection conn = DButil.getConnection();//메서드
+		
+		String sql = null;
+		PreparedStatement stmt = null;
+
+			sql = "SELECT client_mail clientMail, left(client_date,10) clientDate, client_no clientNo FROM client WHERE client_mail = '?' ";
+			stmt= conn.prepareStatement(sql);
+			stmt.setString(1,clientMail);
+			System.out.println("\t 검색어없는 stmt : "+stmt);
+
+		
+		System.out.println("\t 고객 확인");
+		ResultSet rs = stmt.executeQuery();
+		System.out.println("\t ResultSet rs : "+rs);
+		
+		Client cl = null;
+		cl = new Client(); //잠시 쓸 때는 m 처럼 짧은 변수명 사용
+		while(rs.next()) {
+			System.out.println("\t 같은메일 있음");
+			
+			cl.setClientMail(rs.getString("clientMail"));
+			cl.setClientDate(rs.getString("clientDate"));
+			cl.setClientNo(rs.getInt("clientNo"));
+		}
+		//4.
+		return cl;
+	}//셀렉트 원 메서드
+	
 	
 	//셀렉스 리스트 메서드
 	public static ArrayList<Client> selectClientListByPage(int beginRow, int rowPerPage, String searchWord) throws Exception{
@@ -72,7 +109,7 @@ public class ClientDao {
 		
 		
 		while(rs.next()) {
-			
+			System.out.println("\t 목록 있음");
 			Client cl = new Client(); //잠시 쓸 때는 m 처럼 짧은 변수명 사용
 			cl.setClientMail(rs.getString("clientMail"));
 			cl.setClientDate(rs.getString("clientDate"));
@@ -106,18 +143,18 @@ public class ClientDao {
 						
 		rowCnt = stmt.executeUpdate();
 		//쿼리끝
-		System.out.println("~~~~~삭제끝");	
+			
 		return rowCnt;
 	}// 삭제 메서드		
 	
 	// 수정 메서드
-	public static int updateClient (String clientNewMail, String clientPw, String clientMail) throws Exception{
+	public static int updateClient (String clientNewMail, String clientPw, int clientNo) throws Exception{
 		System.out.println("~~~~~~~~~~~~~~~업데이트 클라이언트 실행~~~~~~~~~~~~~~~");
 		// 1.쿼리 정의
 		/*
 		 * update테이블 set열 = 변경할값, where 조건
 		 */
-		String sql = "UPDATE client SET client_mail = ?, PASSWORD(client_pw = ?) WHERE client_mail = ? ";
+		String sql = "UPDATE client SET client_mail = '?', client_pw = ? WHERE client_no = '?' ";
 		
 		//2.전처리 변수생성,초기화
 		int rowCnt = 0; 
@@ -128,7 +165,7 @@ public class ClientDao {
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, clientNewMail);
 		stmt.setString(2, clientPw);
-		stmt.setString(3, clientMail);
+		stmt.setInt(3, clientNo);
 		ResultSet rs = stmt.executeQuery();
 		System.out.println("update client stmt : "+stmt);
 		System.out.println("update client rs : "+rs);

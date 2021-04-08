@@ -16,7 +16,6 @@
 		return;
 	} else if(m.getManagerLevel() < 2){
 		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
-		System.out.println("매니저 레벨이 낮아서 <수정기능은> 안됩니다.");
 		return;
 	}
 	%>
@@ -27,13 +26,13 @@
 	
 	<%
 	// 수집 코드 
-	String clientMail = request.getParameter("clientMail");
+	int clientNo = Integer.parseInt(request.getParameter("clientNo"));
 	String clientNewMail = request.getParameter("clientNewMail");
 	String clientPw = request.getParameter("clientPw");
-	System.out.println(clientMail+"<-- param clientMail");//디버깅
+	System.out.println(clientNo+"<-- param clientNo");//디버깅
 	
 	// dao 수정 메서드 호출
-	ClientDao.updateClient(clientNewMail, clientPw, clientMail);
+	ClientDao.updateClient(clientNewMail, clientPw, clientNo);
 	
 	// 수정 완료 시 client.clientList로 
 	response.sendRedirect(request.getContextPath()+"/client/clientList.jsp");

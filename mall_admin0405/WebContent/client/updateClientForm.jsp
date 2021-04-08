@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "gdu.mall.vo.*" %>
 <%@ page import = "gdu.mall.dao.*" %>
 <%@ page import="gdu.mall.util.*" %>
@@ -36,7 +37,9 @@
 	<%
 	System.out.println("\n----------updateClientForm.jsp 실행 ---------");
 	// 0. 전처리
-	Client c = (Client)(session.getAttribute("sessionClient"));
+	String clientMail = request.getParameter("clientMail");
+	Client c = ClientDao.selectClientOne(clientMail);
+
 	
 	// 0. 전처리 레벨2 이하 접근제한
 	Manager m = (Manager)(session.getAttribute("sessionManager"));
@@ -89,41 +92,46 @@
 	        <div class="row">
 	          <div class="col-md-12 ml-auto align-self-center">
 	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
-	                <br>
+	           <div class="intro">
+				<div class="text">
+					<p>
+	              	<h1 class="IN"><span class="text-primary">고객</span> 목록</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
+					</p>
+	                
 	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
+						<a class="btn btn-primary" href="<%=request.getContextPath()%>/client/clientLsit.jsp">돌아가기</a>
+		          	</div>
 	                <br>
-	              </div> 
-	             </div>
+				</div> 
+			</div>
 	             
 				<!-- 글 전체 -->		       
-				<div class="d-flex">   
+				<div class="col-md-12 ml-auto align-self-center">   
 				<!-- 1 테이블 -->  
-	<form action ="<%=request.getContextPath()%>/client/updateClientAction.jsp" method="post">
-		<table class="table table-second table-hover TC">
-		<tr>
-			<td>Email</td>
-			<td><%=c.getClientMail()%></td>
-		</tr>
-		
-		<tr>
-			<td>PW</td>
-			<td>
-				<input type="text" name="clientPw" value="<%=c.getClientPw() %>">
-			</td>
-		</tr>
-
-		<tr>
-			<td><button type="submit">등록</button> </td>
-			<td><a href="<%=request.getContextPath()%>/client/clientInsertForm.jsp">홈</a></td>
-		</tr>
-		</table>
-	</form>
+				<form action ="<%=request.getContextPath()%>/client/updateClientAction.jsp" method="post">
+					<input type="hidden" name="clientNo" value="<%=c.getClientNo()%>"> 
+					<table class="table table-second table-hover TC">
+					<tr>
+						<td>Email</td>
+						<td><input type="text" name="clientNewMail" value="<%=clientMail%>"></td>
+					</tr>
+					
+					<tr>
+						<td>PW</td>
+						<td>
+							<input type="password" name="clientPw">
+						</td>
+					</tr>
+			
+					<tr>
+						<td></td>
+						<td><button class="btn btn-primary" type="submit">수정</button> </td>
+					</tr>
+					</table>
+				</form>
+				
+				
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
 	   </div> <!-- <div class="container">-->
 	  </div> <!-- <div class="row">-->
