@@ -70,7 +70,7 @@
 		String searchWord = "";
 		if(request.getParameter("searchWord") != null){
 			searchWord = request.getParameter("searchWord");
-			System.out.printf("searchWord: %s <managerList.searchWord> \n",searchWord);
+			System.out.printf("searchWord: %s <clientList.searchWord> \n",searchWord);
 		}	
 		ArrayList<Client> list = ClientDao.selectClientListByPage(beginRow,rowPerPage,searchWord);
 	%>
