@@ -115,7 +115,7 @@
 	            
 	            <div class="intro">
 	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+	              	<h1><span class="text-primary">고객</span> 목록</h1>
 	                <br>
 	                <div class="TR">
 	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
