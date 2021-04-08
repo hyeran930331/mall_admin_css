@@ -99,8 +99,9 @@
 	            
 	            <div class="intro">
 	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
-	                <br>
+	              	<h1 class="IN"><span class="text-primary">카테고리</span> 목록</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
+					
 	                <div class="TR">
 	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
 	          
