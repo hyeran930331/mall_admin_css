@@ -273,7 +273,7 @@ public class ManagerDao {
 		stmt.setString(1,managerId);
 		stmt.setString(2,managerPw);
 		ResultSet rs = stmt.executeQuery();
-		System.out.println(rs);
+		System.out.println("목록에 없으면 null/있으면 @"+rs);
 		System.out.println("~~~~~~매니저 Id,Pw 확인중");		
 			
 		if(rs.next()) { // 확인해서 있으면
