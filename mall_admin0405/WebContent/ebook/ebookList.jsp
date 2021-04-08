@@ -66,8 +66,8 @@
     
 
 	<!-- 3. 출력 -->
-  <!-- 전체를 감싸는-->
-  <div class="site-wrap">
+  	<!-- 전체를 감싸는-->
+  	<div class="site-wrap">
   
    	<!-- 0메뉴바 div -->
 	<!-- 모바일버전. 안채워둠 -->
@@ -99,141 +99,153 @@
     </div> <!-- END .site-navbar-wrap --> 
 	
 	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
 	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1 class="IN"><span class="text-primary">카테고리</span> 목록</h1>
+			<div class="intro">
+				<div class="text">
+					<h1 class="IN"><span class="text-primary">ebook</span> 목록</h1>
 	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
-					
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
 	                <br>
 	              </div> 
 	             </div>
 	             
 				<!-- 글 전체 -->		       
 				<div class="d-flex">   	
-	<!-- 카테고리 눌렀을 때, 카테고리별로 리스트를 나오게 함 (네비게이션) -->
-	<div>
-		<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp">[전체]</a>
-		<%
-			//public static ArrayList<String> categoryNameList() throws Exception{
-			ArrayList<String> list2 = CategoryDao.categoryNameList();
-			
-			for(String ct : list2){
-		%>
-				<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp?categoryName=<%=ct%>">
-					[<%=ct%>]
-				</a>
-		<%
-			}
-		%>
-	</div>
-	
-	<!-- 상단 몇개씩보기 -->
-	<div>
-	<form action="<%=request.getContextPath()%>/ebook/ebookList.jsp" method="post">
-		<select name="rowPerPage">
-			<%
-			for (int i=10; i <=30; i+=5){
-				if(rowPerPage == i){
-			%>
-					<option value="<%=i %>" selected="selected"> <%=i %></option>
-			<%
-				} else {
-			%>
-					<option value="<%=i %>"> <%=i %></option>
-			<%
-				}
-			}
-			%>
-		</select>
-		<button type="submit">보기</button>
-		<button><a href="<%=request.getContextPath()%>/ebook/insertEbookForm.jsp">ebook 추가</a></button>
-		<button> <a href="<%=request.getContextPath()%>/ebook/deleteEbookAction.jsp">ebook 삭제</a></button>	
-	</form>
-	
-	<!--  table -->
-	<table class="table table-second table-hover TC">
-			<th>categoryName</th>
-			<th>ebookISBN</th>
-			<th>ebookTitle</th>
-			<th>ebookAuthor</th>
-			<th>ebookDate</th>
-			<th>ebookPrice</th>
-		</thead>
-		
-		<tbody>
-			<%	
-				for(Ebook e : list){
-			%>
-				<tr>
-					<td><%=e.getCategoryName()%></td>
-					<td><%=e.getEbookISBN()%></td>
-					<td>
-						<a href="<%=request.getContextPath()%>/ebook/ebookOne.jsp?ebookISBN=<%=e.getEbookISBN()%>">
-							<%=e.getEbookTitle()%>
+					
+	                <div class="TR">
+	                	<!-- 상단 몇개씩보기 -->	
+	                	<div>
+			               	<form action="<%=request.getContextPath()%>/ebook/ebookList.jsp" method="post">
+								<input type="hidden" name="searchWord" value="<%=searchWord%>">
+								<select class="form-control IN" name="rowPerPage">
+									<%
+									for (int i=10; i <=30; i+=5){
+										if(rowPerPage == i){
+									%>
+											<option value="<%=i %>" selected="selected"> <%=i %></option>
+									<%
+										} else {
+									%>
+											<option value="<%=i %>"> <%=i %></option>
+									<%
+										}
+									}
+									%>
+								</select>
+								<button class="btn btn-white" type="submit">보기</button>
+							</form>
+						</div>
+						
+						<!-- ebook추가 -->
+						<div>
+							<a class="btn btn-primary" href="<%=request.getContextPath()%>/ebook/insertEbookForm.jsp">ebook 추가</a>
+						</div>		
+						
+						<!-- 카테고리 눌렀을 때, 카테고리별로 리스트를 나오게 함 (네비게이션) -->
+						<div>
+							<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp">[전체]</a>
+							<%
+							//public static ArrayList<String> categoryNameList() throws Exception{
+							ArrayList<String> list2 = CategoryDao.categoryNameList();
+								
+							for(String ct : list2){
+							%>
+								<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp?categoryName=<%=ct%>">
+									<br>[<%=ct%>]
+								</a>
+							<%
+							}
+							%>
+						</div>
+					</div>
+												
+					<!--  table -->
+					<table class="table table-second table-hover TC">
+						<thead>
+						<TR>
+							<th>categoryName</th>
+							<th>ebookISBN</th>
+							<th>ebookTitle</th>
+							<th>ebookAuthor</th>
+							<th>ebookDate</th>
+							<th>ebookPrice</th>
+							<th>삭제</th>
+						</TR>
+						</thead>
+							
+						<tbody>
+						<%	
+						for(Ebook e : list){
+						%>
+						<tr>
+							<td><%=e.getCategoryName()%></td>
+							<td><%=e.getEbookISBN()%></td>
+							<td>
+								<a href="<%=request.getContextPath()%>/ebook/ebookOne.jsp?ebookISBN=<%=e.getEbookISBN()%>">
+									<%=e.getEbookTitle()%>
+								</a>
+							</td>
+							<td><%=e.getEbookAuthor()%></td>
+							<td><%=e.getEbookDate()%> </td><!-- 00:00:00초이므로 제거 -->
+							<td><%=e.getEbookPrice()%>원</td>
+							<td><a class="btn btn-info" href="<%=request.getContextPath()%>/ebook/deleteEbookAction.jsp?ebookISBN=<%=e.getEbookISBN()%>">삭제</a></td>
+						</tr>
+						<%
+						}
+						%>
+						</tbody>
+					</table>
+						
+					<!-- 페이징 -->
+					<%
+					if(currentPage > 1){//현재 페이지가 1보다 크면 이전이 나오게 해라.
+					%>
+					<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp?currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>">
+						이전
+					</a>
+					<%      
+					}//이전 if 끝
+					%>
+					      
+						      
+					<%
+					int totalRow = EbookDao.totalCount(); //메서드활용
+					int lastPage = totalRow/rowPerPage;
+					System.out.println("\t total Row : "+ totalRow);
+					System.out.println("\t last Page : "+ lastPage);
+						        
+						    
+					if (totalRow% rowPerPage !=0){ //현재 페이지가 전체게시글/페이지행 몫이 딱 떨어지거나. 몫보다 클때.
+						lastPage += 1;  // 잘안씀 lastPage - lastPage+1; lastPage++
+					}//보드 케이블의 총 행수 구하는 if 끝
+					         
+					if(currentPage<lastPage) {//현재 페이지가 라스트 페이지보다 작으면 다음이 나오게 해라.
+					%>
+						<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp?currentPage=<%=currentPage+1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>">
+							다음
 						</a>
-					</td>
-					<td><%=e.getEbookAuthor()%></td>
-					<td><%=e.getEbookDate()%> </td><!-- 00:00:00초이므로 제거 -->
-					<td><%=e.getEbookPrice()%>원</td>
-				</tr>
-			<%
-				}
-			%>
-		</tbody>
-	</table>
-		<!-- 페이징 -->
-		<%
-			if(currentPage > 1){//현재 페이지가 1보다 크면 이전이 나오게 해라.
-		%>
-			<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp?currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>">
-				이전
-			</a>
-		<%      
-			}//이전 if 끝
-		%>
-		      
-		      
-		<%
-			int totalRow = EbookDao.totalCount(); //메서드활용
-			int lastPage = totalRow/rowPerPage;
-			System.out.println("\t total Row : "+ totalRow);
-			System.out.println("\t last Page : "+ lastPage);
-		        
-		    
-			if (totalRow% rowPerPage !=0){ //현재 페이지가 전체게시글/페이지행 몫이 딱 떨어지거나. 몫보다 클때.
-				lastPage += 1;  // 잘안씀 lastPage - lastPage+1; lastPage++
-			}//보드 케이블의 총 행수 구하는 if 끝
-		         
-			if(currentPage<lastPage) {//현재 페이지가 라스트 페이지보다 작으면 다음이 나오게 해라.
-		%>
-			<a href="<%=request.getContextPath()%>/ebook/ebookList.jsp?currentPage=<%=currentPage+1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>">
-				다음
-			</a>
-		<% 
-			}//다음 if끝
-		%>
+					<% 
+					}//다음 if끝
+					%>
 		
-		<!-- 검색기능 -->
-		<form action="<%=request.getContextPath()%>/client/clientList.jsp" method="post">
-			<input type="hidden" name="rowPerPage" value="<%=rowPerPage%>">
-			ebook Title : <input type="text" name="searchWord" >
-			<button type="submit"> 
-			검색
-			</button>
-		</form>
-				</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+					<!-- 검색기능 -->
+					<form action="<%=request.getContextPath()%>/client/clientList.jsp" method="post">
+						<input type="hidden" name="rowPerPage" value="<%=rowPerPage%>">
+						ebook Title : <input type="text" name="searchWord" >
+						<button class="btn btn-whtie" type="submit"> 
+						검색
+						</button>
+					</form>
+						
+		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		
 	</div>
+	
 </body>
 </html>

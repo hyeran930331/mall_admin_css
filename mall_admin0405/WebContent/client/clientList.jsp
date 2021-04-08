@@ -113,131 +113,132 @@
     </div> <!-- END .site-navbar-wrap --> 
 	
 	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
 	            
-	            <div class="intro">
-	              <div class="text">
-	             	<p>
+			<div class="intro">
+				<div class="text">
+					<p>
 	              	<h1 class="IN"><span class="text-primary">고객</span> 목록</h1>
 	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 					</p>
+	                
 	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
+						<a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
+		          	</div>
 	                <br>
-	              </div> 
-	             </div>
+				</div> 
+			</div>
 	             
-				<!-- 글 전체 -->		       
-				<div class="d-flex">   
-				<!-- 1 테이블 -->  
-		<!-- 상단 몇개씩보기 -->
-		<form action="<%=request.getContextPath()%>/client/clientList.jsp" method="post">
-			<input type="hidden" name="searchWord" value="<%=searchWord%>">
-			<select class="custom-select"  id="inputGroup-sizing-sm" name="rowPerPage">
-				<%
-				for (int i=10; i <=30; i+=5){
-					if(rowPerPage == i){
-				%>
-						<option value="<%=i %>" selected="selected"> <%=i %></option>
-				<%
-					} else {
-				%>
-						<option value="<%=i %>"> <%=i %></option>
-				<%
-					}
-				}
-				%>
-			</select>
-			<button class="btn btn-white" type="submit">보기</button>
-		</form>
-		
-		<!-- 고객표 -->
-		<table class="table table-second table-hover TC">
-			<tr>
-			<thead>
-				<th>clientMail</th>
-				<th>clientDate</th>
-				<th>수정</th>
-				<th>삭제</th>
-			</thead>
-			</tr>
+			<!-- 글 전체 -->		       
+			<div class="d-flex">
+				<!-- 상단 몇개씩보기 -->
+				<form action="<%=request.getContextPath()%>/client/clientList.jsp" method="post">
+					<input type="hidden" name="searchWord" value="<%=searchWord%>">
+					<select class="custom-select"  id="inputGroup-sizing-sm" name="rowPerPage">
+						<%
+						for (int i=10; i <=30; i+=5){
+							if(rowPerPage == i){
+						%>
+								<option value="<%=i %>" selected="selected"> <%=i %></option>
+						<%
+							} else {
+						%>
+								<option value="<%=i %>"> <%=i %></option>
+						<%
+							}
+						}
+						%>
+					</select>
+					<button class="btn btn-white" type="submit">보기</button>
+				</form>
 				
-			<%
-			for(Client c: list){ //c 리스트가 있다면, 없을때까지
-			%>
-				<tr>
-				<tbody>
-					<td> <%=c.getClientMail()%></td>
-					<td> <%=c.getClientDate()%> </td>
-					<td>
-						
-						<a class="btn btn-primary" href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">수정</a>
-						
-					</td>
-					<td>
-						
-						<a class="btn btn-info" href="<%=request.getContextPath()%>/client/deleteClientAction.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
-						<!-- ?clientMail=< % = c . getClientMail() % > 를  method="post" 해야 넘어간다. -->
-							삭제
-						</a>
+				<!-- 고객표 -->
+				<table class="table table-second table-hover TC">
+					<thead>
+					<tr>
+						<th>clientMail</th>
+						<th>clientDate</th>
+						<th>수정</th>
+						<th>삭제</th>
+					</tr>
+					</thead>
 					
-					</td>
-				</tr>
-				</tbody>
-			<%
-			}//FOR
-			%>
-		</table>
-		
-		<!-- 페이징 -->
-		<%
-			if(currentPage > 1){//현재 페이지가 1보다 크면 이전이 나오게 해라.
-		%>
-			<a href="<%=request.getContextPath()%>/client/clientList.jsp?currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>">
-				이전
-			</a>
-		<%      
-			}//이전 if 끝
-		%>
-		      
-		      
-		<%
-			int totalRow = ClientDao.totalCount(searchWord); //메서드활용
-			int lastPage = totalRow/rowPerPage;
-			System.out.println("\t total Row : "+ totalRow);
-			System.out.println("\t last Page : "+ lastPage);
-		        
-		    
-			if (totalRow% rowPerPage !=0){ //현재 페이지가 전체게시글/페이지행 몫이 딱 떨어지거나. 몫보다 클때.
-				lastPage += 1;  // 잘안씀 lastPage - lastPage+1; lastPage++
-			}//보드 케이블의 총 행수 구하는 if 끝
-		         
-			if(currentPage<lastPage) {//현재 페이지가 라스트 페이지보다 작으면 다음이 나오게 해라.
-		%>
-			<a href="<%=request.getContextPath()%>/client/clientList.jsp?currentPage=<%=currentPage+1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>">
-				다음
-			</a>
-		<% 
-			}//다음 if끝
-		%>
-		
-		<!-- 검색기능 -->
-		<form action="<%=request.getContextPath()%>/client/clientList.jsp" method="post">
-			<input type="hidden" name="rowPerPage" value="<%=rowPerPage%>">
-			clientMail : <input class="form-control" type="text" name="searchWord" placeholder="<%=searchWord%>" >
-			<button class="btn btn-white" type="submit"> 
-			검색
-			</button>
-		</form>
+					<tbody>
+					<%
+					for(Client c: list){ //c 리스트가 있다면, 없을때까지
+					%>
+						<tr>
+							<td> <%=c.getClientMail()%></td>
+							<td> <%=c.getClientDate()%> </td>
+							<td>
+								
+								<a class="btn btn-primary" href="<%=request.getContextPath()%>/client/updateClientForm.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">수정</a>
+								
+							</td>
+							<td>
+								
+								<a class="btn btn-info" href="<%=request.getContextPath()%>/client/deleteClientAction.jsp?clientMail=<%=c.getClientMail()%>&currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>" method="post">
+								<!-- ?clientMail=< % = c . getClientMail() % > 를  method="post" 해야 넘어간다. -->
+									삭제
+								</a>
+							
+							</td>
+						</tr>
+					<%
+					}//FOR
+					%>
+					</tbody>
+				</table>
+				
+				<!-- 페이징 -->
+				<%
+					if(currentPage > 1){//현재 페이지가 1보다 크면 이전이 나오게 해라.
+				%>
+					<a href="<%=request.getContextPath()%>/client/clientList.jsp?currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>">
+						이전
+					</a>
+				<%      
+					}//이전 if 끝
+				%>
+				      
+				      
+				<%
+					int totalRow = ClientDao.totalCount(searchWord); //메서드활용
+					int lastPage = totalRow/rowPerPage;
+					System.out.println("\t total Row : "+ totalRow);
+					System.out.println("\t last Page : "+ lastPage);
+				        
+				    
+					if (totalRow% rowPerPage !=0){ //현재 페이지가 전체게시글/페이지행 몫이 딱 떨어지거나. 몫보다 클때.
+						lastPage += 1;  // 잘안씀 lastPage - lastPage+1; lastPage++
+					}//보드 케이블의 총 행수 구하는 if 끝
+				         
+					if(currentPage<lastPage) {//현재 페이지가 라스트 페이지보다 작으면 다음이 나오게 해라.
+				%>
+					<a href="<%=request.getContextPath()%>/client/clientList.jsp?currentPage=<%=currentPage+1%>&rowPerPage=<%=rowPerPage%>&searchWord=<%=searchWord%>">
+						다음
+					</a>
+				<% 
+					}//다음 if끝
+				%>
+				
+				<!-- 검색기능 -->
+				<form action="<%=request.getContextPath()%>/client/clientList.jsp" method="post">
+					<input type="hidden" name="rowPerPage" value="<%=rowPerPage%>">
+					clientMail : <input class="form-control" type="text" name="searchWord" placeholder="<%=searchWord%>" >
+					<button class="btn btn-white" type="submit"> 
+					검색
+					</button>
+				</form>
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		
 	</div>	
+	
 </body>
 </html>
