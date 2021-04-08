@@ -100,12 +100,10 @@
 	            
 	            <div class="intro">
 	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+	              	<h1><span class="text-primary">ebook</span> 수정</h1>
+	              	매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 	                <br>
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
+	                <a class="btn btn-success" href="<%=request.getContextPath()%>/ebook/ebookOne.jsp?ebookISBN=<%=e.getEbookISBN()%>">돌아가기</a>
 	                <br>
 	              </div> 
 	             </div>

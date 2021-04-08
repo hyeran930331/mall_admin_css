@@ -91,7 +91,7 @@
 				<div class="text-center">
 					<h1 class="IN"><span class="text-primary">Ebook</span> 이미지</h1>
 	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
-	                <br>
+	                <a class="btn btn-success" href="<%=request.getContextPath()%>/ebook/ebookOne.jsp?ebookISBN=<%=e.getEbookISBN()%>">돌아가기</a>
 	                <br>
 					<!-- 글 전체 -->		          
 					<!-- 1 테이블 -->  
