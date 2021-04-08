@@ -3,9 +3,9 @@
 <%@ page import="gdu.mall.dao.*" %>
 <%@ page import="java.util.*" %>
 	<%	
-	//레벨 2 미만 보안코드
+	//레벨 1 미만 보안코드
 	Manager m = (Manager)session.getAttribute("sessionManager");
-	if(m == null || m.getManagerLevel() < 2){
+	if(m == null || m.getManagerLevel() < 1){
 		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
 		return;
 	}

@@ -4,9 +4,9 @@
 <%@ page import="java.util.*" %>
 
 	<%
-	//레벨 2 미만 보안코드
+	//레벨 1 미만 보안코드
 	Manager m = (Manager)session.getAttribute("sessionManager");
-	if(m == null || m.getManagerLevel() < 2){
+	if(m == null || m.getManagerLevel() < 1){
 		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
 		return;
 	}
@@ -24,8 +24,10 @@
 	//dao삭제 메서드 호출
 	if(m.getManagerLevel() > 1){ //manager.managerLevel == 2
 		CommentDao.deleteComment(commentNo);
+		System.out.printf("슈퍼관리자라서 managerid가 달라도 가능");
 	} else if(m.getManagerLevel() > 0) {//manager.managerLevel == 1
 		CommentDao.deleteComment(commentNo, m.getManagerId());
+		System.out.printf("관리자이지만, managerid가 달라서 불가능");
 	}
 	//list 재실행
 	//response.sendRedirect(request.getContextPath()+"/notice/noticeList.jsp");
