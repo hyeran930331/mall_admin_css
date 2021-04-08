@@ -85,7 +85,7 @@
             </div>
          	<!-- 오른쪽 버튼 div -->
             <!-- 관리자화면 메뉴(네비게이션) include -->
-	   			<jsp:include page="<%=request.getContextPath()%>/inc/adminMenu.jsp"></jsp:include>
+	   			<jsp:include page="/inc/adminMenu.jsp"></jsp:include>
           </div>
         </div>
       </div>
