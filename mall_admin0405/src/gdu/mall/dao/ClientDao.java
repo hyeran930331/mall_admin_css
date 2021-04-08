@@ -26,7 +26,7 @@ public class ClientDao {
 		ResultSet rs = stmt.executeQuery();
 		
 		if(rs.next()) {
-			System.out.println("\t 목록 있음");
+			
 			totalRow = rs.getInt("count(*)");
 		}
 		
@@ -72,7 +72,7 @@ public class ClientDao {
 		
 		
 		while(rs.next()) {
-			System.out.println("\t 목록 있음");
+			
 			Client cl = new Client(); //잠시 쓸 때는 m 처럼 짧은 변수명 사용
 			cl.setClientMail(rs.getString("clientMail"));
 			cl.setClientDate(rs.getString("clientDate"));
