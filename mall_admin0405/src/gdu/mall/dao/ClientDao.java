@@ -106,7 +106,7 @@ public class ClientDao {
 						
 		rowCnt = stmt.executeUpdate();
 		//쿼리끝
-			
+		System.out.println("~~~~~삭제끝");	
 		return rowCnt;
 	}// 삭제 메서드		
 	
