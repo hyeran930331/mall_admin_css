@@ -33,12 +33,12 @@
   <%
 	System.out.println("----------매니저 리스트 실행----------");
 	
-	// 0. 전처리 레벨2 미만 접근제한
+	// 0. 전처리 레벨1 미만 접근제한
 	Manager mm = (Manager)(session.getAttribute("sessionManager"));
 	if(mm==null){
 		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
 		return;
-	} else if(mm.getManagerLevel() < 2){
+	} else if(mm.getManagerLevel() < 1){
 		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
 		return;
 	}
