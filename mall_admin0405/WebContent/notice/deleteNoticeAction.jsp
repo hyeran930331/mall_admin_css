@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "gdu.mall.vo.*" %>
 <%@ page import="gdu.mall.dao.*"%>
+	<%
+	request.setCharacterEncoding("UTF-8");
+	System.out.println("\n----------deleteNoticeAction.jsp 실행 ---------");
+	%>
 	
 	<%
 	//레벨 2 미만 보안코드
 	Manager m = (Manager)session.getAttribute("sessionManager");
 	if(m == null || m.getManagerLevel() < 2){
 		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
+		System.out.println("매니저 레벨이 낮아서 <삭제기능은> 안됩니다.");
 		return;
 	}
 	%>

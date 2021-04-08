@@ -71,48 +71,47 @@
       </div>
     </div> <!-- END .site-navbar-wrap --> 
 	
-	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
+		<!-- 페이지 -->
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
+		            
+			<div class="intro">
+				<div class="text IN">
+					<h1 class="IN"><span class="text-primary">공지</span> 추가</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
+	                <br>
+	                <a class="btn btn-success" href="<%=request.getContextPath()%>/ebook/ebookList.jsp">돌아가기</a>
+	            </div> 
+	        </div>
 	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
-	                <br>
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
-	                <br>
-	              </div> 
-	             </div>
-	             
-				<!-- 글 전체 -->		       
-				<div class="d-flex">   
-				<!-- 1 테이블 -->  
-	
-	<form action="<%=request.getContextPath()%>/notice/insertNoticeAction.jsp" method="post">
-		<input type="hidden" name="managerId" value="<%=m.getManagerId()%>">
-		
-		<table class="table table-second table-hover TC">	
-			<tr>
-				<th>noticeTitle</th>
-				<td><input type="text" name= "noticeTitle"></td>
-			</tr>
-			<tr>
-				<th>noticeContent</th>
-				<td><textarea rows="5" cols="80" name="noticeContent"></textarea></td>
-			</tr>
-		</table>
-		
-		<button type="submit">공지 생성</button>
-	</form>
+			<!-- 글 전체 -->		       
+			<div class="d-flex">   
+				<!-- 1 테이블 -->
+				<form action="<%=request.getContextPath()%>/notice/insertNoticeAction.jsp" method="post">
+					<button class="btn btn-primary" type="submit">추가</button>
+					<input type="hidden" name="managerId" value="<%=m.getManagerId()%>">
+					
+					<table class="table table-second table-hover TC">	
+						<tr>
+							<th>noticeTitle</th>
+							<td><input type="text" name= "noticeTitle"></td>
+						</tr>
+						<tr>
+							<th>noticeContent</th>
+							<td><textarea rows="5" cols="80" name="noticeContent"></textarea></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+					
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	
 	</div>
+	
 </body>
 </html>

@@ -84,52 +84,53 @@
     </div> <!-- END .site-navbar-wrap --> 
 	
 	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
 	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+			<div class="intro">
+				<div class="text">
+					<h1 class="IN"><span class="text-primary">공지</span> 수정</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 	                <br>
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
-	                <br>
-	              </div> 
-	             </div>
+	                <a class="btn btn-success" href="<%=request.getContextPath()%>/notice/noticeOne.jsp?noticeNo=<%=n.getNoticeNo()%>">돌아가기</a>
+	            	<a class="btn btn-info" href="<%=request.getContextPath()%>/notice/deleteNoticeAction.jsp?noticeNo=<%=n.getNoticeNo()%>">삭제</a>
+	            </div> 
+	        </div>
 	             
 				<!-- 글 전체 -->		       
 				<div class="d-flex">   
-				<!-- 1 테이블 -->  
-	<form action="<%=request.getContextPath()%>/notice/updateNoticeOneAction.jsp" method="post">
-	<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
-		<table class="table table-second table-hover TC">
-			<tr>
-				<th>managerId</th>
-				<td><%=n.getManagerId()%></td>
-			</tr>
-			<tr>
-				<th>noticeDate</th>
-				<td><%=n.getNoticeDate()%></td>
-			</tr>
-			<tr>
-				<th>noticeTitle</th>
-				<td><input type="text" name="noticeTitle" value="<%=n.getNoticeTitle()%>"></td>
-			</tr>
-			<tr>
-				<th>noticeContent</th>
-				<td><textarea rows="5" cols="80" name="noticeContent"><%=n.getNoticeContent()%></textarea></td>
-			</tr>
-		</table>
-		<button type="submit">수정</button>
-	</form>
+					<!-- 1 테이블 -->  
+					<form action="<%=request.getContextPath()%>/notice/updateNoticeAction.jsp" method="post">
+					<button class="btn btn-primary" type="submit">수정</button>
+					<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
+						<table class="table table-second table-hover TC">
+							<tr>
+								<th>managerId</th>
+								<td><%=n.getManagerId()%></td>
+							</tr>
+							<tr>
+								<th>noticeDate</th>
+								<td><%=n.getNoticeDate()%></td>
+							</tr>
+							<tr>
+								<th>noticeTitle</th>
+								<td><input type="text" name="noticeTitle" value="<%=n.getNoticeTitle()%>"></td>
+							</tr>
+							<tr>
+								<th>noticeContent</th>
+								<td><textarea rows="5" cols="80" name="noticeContent"><%=n.getNoticeContent()%></textarea></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+		
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+
 	</div>
 </body>
 </html>

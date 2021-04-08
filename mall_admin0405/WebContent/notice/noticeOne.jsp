@@ -31,18 +31,16 @@
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<%
-	//레벨 2 미만 보안코드
+	System.out.println("\n----------noticeOne.jsp 실행----------");
+	
+	//레벨 1 미만 보안코드
 	Manager m = (Manager)session.getAttribute("sessionManager");
-	if(m == null || m.getManagerLevel() < 2){
+	if(m == null || m.getManagerLevel() < 1){
 		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
 		return;
 	}
 	%>
 
-<!-- 관리자화면 메뉴(네비게이션) include -->
-	<div>
-		<jsp:include page="/inc/adminMenu.jsp"></jsp:include>
-	</div>
 	<%
 		//수집
 		int noticeNo= Integer.parseInt(request.getParameter("noticeNo"));
@@ -83,99 +81,102 @@
       </div>
     </div> <!-- END .site-navbar-wrap --> 
 	
-	<!-- 페이지 -->
-	  <div class="site-blocks-cover" id="home-section">
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-md-12 ml-auto align-self-center">
-	            
-	            <div class="intro">
-	              <div class="text">
-	              	<h1><span class="text-primary">카테고리</span> 목록</h1>
+		<!-- 페이지 -->
+		<div class="site-blocks-cover" id="home-section">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12 ml-auto align-self-center">
+		
+			<div class="intro">
+				<div class="text">
+					<h1 class="IN"><span class="text-primary">notice</span> 상세</h1>
+	                매니저 [ <%=m.getManagerName() %> ]님, LEVEL : <%=m.getManagerLevel() %>	
 	                <br>
-	                <div class="TR">
-	                 <a class="btn btn-primary" href="<%=request.getContextPath()%>/category/insertCategoryForm.jsp">카테고리 추가</a>
-	          
-	                </div>
-	                <br>
-	              </div> 
-	             </div>
-	             
-				<!-- 글 전체 -->		       
-				<div class="d-flex">   
-				<!-- 1 테이블 -->  
-	<table class="table table-second table-hover TC">
-		<tr>
-			<th>noticeTitle</th>
-			<td><%=n.getNoticeTitle()%></td>
-		</tr>
-		<tr>
-			<th>managerId</th>
-			<td><%=n.getManagerId()%></td>
-		</tr>
-		<tr>
-			<th>noticeContent</th>
-			<td><%=n.getNoticeContent()%></td>
-		</tr>
-		<tr>
-			<th>noticeDate</th>
-			<td><%=n.getNoticeDate()%></td>
-		</tr>
-	</table>
-	<a href="<%=request.getContextPath()%>/notice/updateNoticeForm.jsp?noticeNo=<%=n.getNoticeNo()%>"><button>공지수정</button></a>
-	<a href="<%=request.getContextPath()%>/notice/deleteNoticeAction.jsp?noticeNo=<%=n.getNoticeNo()%>"><button>공지삭제</button></a>
-	<br>
-	<br>
-	<!-- 댓글 리스트-->
-	<%
-		System.out.println("\t"+noticeNo+"<---notice No");
-	
-		//Notice notice= NoticeDao.selectNoticeOne(noticeNo);
-		//public static ArrayList<Comment> selectCommentListByNoticeNo(int noticeNo){
-		ArrayList<Comment> commentList = CommentDao.selectCommentListByNoticeNo(noticeNo);
-	%>
-			<table border="1">
-				<tr>
-					<th>번호</th>
-					<th>댓글</th>
-					<th>날짜</th>
-					<th>관리자</th>
-					<th></th>
-				</tr>
-	<%
-		for (Comment c : commentList) {//commentList가 있으면
-	%>
-				<tr>
-					<td><%=c.getCommentNo()%></td>
-					<td><%=c.getCommentContent()%></td>
-					<td><%=c.getCommentDate()%></td>
-					<td><%=c.getManagerId()%></td>
-					<td>
-						<a href="<%=request.getContextPath()%>/notice/deleteCommentAction.jsp?commentNo=<%=c.getCommentNo()%>&noticeNo=<%=noticeNo%>">
-						<button><%=c.getCommentNo()%>번 댓글삭제</button>
-						</a>
-				</tr>
-	<%
-		}//for 끝
-	%>
-			</table>
-	
+	                <a class="btn btn-success" href="<%=request.getContextPath()%>/notice/noticeList.jsp">돌아가기</a>
+	            	<a class="btn btn-info" href="<%=request.getContextPath()%>/notice/deleteNoticeAction.jsp?noticeNo=<%=n.getNoticeNo()%>">삭제</a>
+	            	<a class="btn btn-primary" href="<%=request.getContextPath()%>/notice/updateNoticeForm.jsp?noticeNo=<%=n.getNoticeNo()%>">수정</a>
+	            </div> 
+	        </div>
 
-	<!-- 댓글 달기 -->
-	<form action="<%=request.getContextPath()%>/notice/insertCommentAction.jsp" method="post">
-		<!-- 현재 공지글 넘버 넘기기 -->
-		<input type="hidden" name="noticeNo" value="<%=noticeNo%>">
-		<div>
-			<!--  세션값 사용 -->
-			managerID : <input type="text" name="managerId" value="<%=m.getManagerId()%>" readOnly="readonly">
-		</div>
-		<textarea rows="2" cols="30" name="commentContent"></textarea>
-		<button type="submit">댓글입력 </button>
- 	</form>
+	             
+			<!-- 글 전체 -->		       
+			<div class="col-md-12 ml-auto align-self-center">
+				<br>
+				<div>
+					<!-- 1 테이블 -->  
+					<table class="table table-dark table-hover TC">
+						<tr>
+							<td>noticeTitle</td>
+							<th><%=n.getNoticeTitle()%></th>
+							<td>noticeDate</td>
+							<th><%=n.getNoticeDate()%></th>
+							<td>managerId</td>
+							<th><%=n.getManagerId()%></th>
+						</tr>
+						
+						<tr>
+							<td>noticeContent</td>
+							<th colspan="5"><%=n.getNoticeContent()%></th>
+						</tr>
+					</table>
+				</div>
+				
+				<!-- 댓글 리스트-->
+				<div>
+				<%
+				System.out.println("\t"+noticeNo+"<---notice No");
+			
+				//Notice notice= NoticeDao.selectNoticeOne(noticeNo);
+				//public static ArrayList<Comment> selectCommentListByNoticeNo(int noticeNo){
+				ArrayList<Comment> commentList = CommentDao.selectCommentListByNoticeNo(noticeNo);
+				%>
+					<table class="table table-secondry table-hover TC">
+						<tr>
+							<th>번호</th>
+							<th>날짜</th>
+							<th>댓글</th>
+							<th>삭제</th>
+						</tr>
+						<%
+						for (Comment c : commentList) {//commentList가 있으면
+						%>
+						<tr>
+							<td><%=c.getCommentNo()%></td>
+							<td><%=c.getCommentDate()%></td>
+							<td><%=c.getCommentContent()%></td>
+							<td>
+								<a class="btn btn-info" href="<%=request.getContextPath()%>/notice/deleteCommentAction.jsp?commentNo=<%=c.getCommentNo()%>&noticeNo=<%=noticeNo%>">(<%=c.getManagerId()%>의 댓글)</a>
+						</tr>
+						<%
+						}//for 끝
+						%>
+					</table>
+				</div>
+				
+				<!-- 댓글 달기 -->
+				<div>
+					<form action="<%=request.getContextPath()%>/notice/insertCommentAction.jsp" method="post">
+						<!-- 현재 공지글 넘버 넘기기 -->
+						<input type="hidden" name="noticeNo" value="<%=noticeNo%>">
+						<div class="input-group input-group-sm mb-3">
+							<!--  세션값 사용 -->
+							<span class="input-group-text" id="inputGroup-sizing-sm">manager_id</span>
+							<input  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="text" name="managerId" value="<%=m.getManagerId()%>" readOnly="readonly">
+					
+							<textarea aria-label="Server" rows="2" cols="30" name="commentContent"></textarea>
+							<button  class="form-control" class="btn" type="submit">댓글입력 </button>
+				 		</div>
+				 	</form>
+				 </div>
+				 	
+			</div><!-- 글 전체 -->	
+			
 		</div> <!-- <div class="site-blocks-cover" id="home-section">-->
-	   </div> <!-- <div class="container">-->
-	  </div> <!-- <div class="row">-->
-	 </div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+		</div> <!-- <div class="container">-->	
+		</div> <!-- <div class="row">-->
+		</div> <!--  <div class="col-md-12 ml-auto align-self-center">-->
+	
 	</div>
+	
 </body>
 </html>
