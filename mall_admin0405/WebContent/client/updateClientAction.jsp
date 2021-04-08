@@ -16,6 +16,7 @@
 		return;
 	} else if(m.getManagerLevel() < 2){
 		response.sendRedirect(request.getContextPath()+"/adminIndex.jsp");
+		System.out.println("매니저 레벨이 낮아서 <수정기능은> 안됩니다.");
 		return;
 	}
 	%>
