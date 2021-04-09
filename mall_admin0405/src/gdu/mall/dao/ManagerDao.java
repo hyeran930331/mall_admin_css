@@ -11,7 +11,7 @@ public class ManagerDao {
 	//level0 리스트
 		public static ArrayList<Manager> selectManagerListByZero() throws Exception{
 			System.out.println("~~~~~~~~~~~~~~~매니저 레벨0 실행~~~~~~~~~~~~~~~");
-			ArrayList<Manager> list = new ArrayList<>();
+			
 			String sql ="SELECT manager_id managerId, manager_date managerDate FROM manager WHERE manager_level = 0";
 			Connection conn = DButil.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -20,7 +20,8 @@ public class ManagerDao {
 			ResultSet rs= stmt.executeQuery();
 			System.out.println("byzero Manager stmt : "+stmt);
 			System.out.println("byzero Manager rs : "+rs);
-			 
+			
+			ArrayList<Manager> list = new ArrayList<>();
 			 while(rs.next()) {
 				 System.out.println("목록있음");
 				 Manager m = new Manager(); // 잠깐 쓰일때 알파벳이나 temp를 쓴다.
